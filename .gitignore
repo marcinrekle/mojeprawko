@@ -24,4 +24,5 @@ storage/
 .env.php
 .env
 .env.example
+client_id.json
 >>>>>>> 23c7076cdd5785cac75e5968a5a91c0ed6ecb30d
