@@ -11,12 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
 
-Route::get('auth/{provider?}', 'Auth\AuthController@redirectToProvider');
-Route::get('auth/{provider?}/callback', 'Auth\AuthController@handleProviderCallback');
+
+//Route::get('auth/{provider?}', 'Auth\AuthController@redirectToProvider');
+//Route::get('auth/{provider?}/callback', 'Auth\AuthController@handleProviderCallback');
 
 /*Route::get('/login/{provider?}',[
     'uses' => 'AuthController@getSocialAuth',
@@ -42,6 +40,9 @@ Route::get('auth/{provider?}/callback', 'Auth\AuthController@handleProviderCallb
 
 Route::group(['middleware' => ['web']], function () {
     //
+    Route::get('/', function () {
+    	return view('pages.home');
+	});
     Route::get('auth/{provider?}', 'Auth\AuthController@redirectToProvider');
-Route::get('auth/{provider?}/callback', 'Auth\AuthController@handleProviderCallback');
+	Route::get('auth/{provider?}/callback', 'Auth\AuthController@handleProviderCallback');
 });
