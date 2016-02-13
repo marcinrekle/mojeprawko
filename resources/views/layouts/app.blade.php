@@ -15,7 +15,7 @@
               content="Lorem ipsum dolor sit amet, nihil fabulas et sea, nam posse menandri scripserit no, mei."/>
     @show
 
-        {!! HTML::style('/css/app.css') !!}
+        {!! Html::style('/css/app.css') !!}
 
     @yield('styles')
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -41,7 +41,7 @@
 @include('partials._footer')
 
 <!-- Scripts -->
-{!! HTML::script('/js/all.js') !!}
+{!! Html::script('/js/all.js') !!}
 @yield('scripts')
 
 </body>

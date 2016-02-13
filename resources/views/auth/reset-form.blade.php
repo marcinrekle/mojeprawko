@@ -1,7 +1,7 @@
 @extends('app')
 
 <!-- @section('head')
-    {!! HTML::style('/assets/css/reset-form.css') !!}
+    {!! Html::style('/assets/css/reset-form.css') !!}
 @stop -->
 
 @section('content')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Student;
 use Socialite;
 use Auth;
 use Validator;
@@ -31,7 +32,9 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
+
+    protected $redirectAfterLogout = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -86,6 +89,7 @@ class AuthController extends Controller
      */
     public function handleProviderCallback($provider=null)
     {
+        var_dump($provider);
         try {
             $user = Socialite::driver($provider)->user();
         } catch (Exception $e) {
@@ -96,7 +100,7 @@ class AuthController extends Controller
  
         Auth::login($authUser, true);
  
-        return redirect()->route('home');
+        return redirect('/');
     }
  
     /**
@@ -109,15 +113,42 @@ class AuthController extends Controller
     {
         $authUser = User::where('social_id', $socialUser->id)->first();
  
+        //var_dump($authUser);
+        
         if ($authUser){
             return $authUser;
         }
+
  
-        return User::create([
+        $new = User::create([
             'name' => $socialUser->name,
             'email' => $socialUser->email,
+            'password' => '',
+            'social_id' => $socialUser->id,
+            'avatar' => $socialUser->avatar,
+            'social_token' => $socialUser->token,
+            'osk_id' => 1,
+            'is_admin' => '0',
+        ]);
+
+        $student = new Student;
+        $student->hours_count = 30;
+        $student->cost = 1400;
+        $new->student()->save($student);
+
+        //var_dump($socialUser);
+        //dd($new);
+        
+
+        return $new;
+
+        /*return User::create([
+            'name' => $socialUser->name,
+            'email' => $socialUser->email,
+            'password' => '',
             'social_id' => $socialUser->id,
             'avatar' => $socialUser->avatar
-        ]);
+        ]);*/
+
     }
 }

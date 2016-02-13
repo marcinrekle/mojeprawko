@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'social_id', 'avatar', 'social_token', 'osk_id',
     ];
 
     /**
@@ -21,6 +21,19 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','is_admin',
     ];
+
+    public function osk()
+    {
+        return $this->belongsTo('App\Osk');
+    }
+
+    
+
+    public function student()
+    {
+        return $this->hasOne('App\Student');
+    }
+
 }

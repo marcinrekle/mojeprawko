@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 <!-- @section('head')
-    {!! HTML::style('/assets/css/signin.css') !!}
+    {!! Html::style('/assets/css/signin.css') !!}
 @stop -->
 
 @section('content')

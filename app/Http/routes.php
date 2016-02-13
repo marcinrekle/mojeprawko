@@ -13,19 +13,7 @@
 
 
 
-//Route::get('auth/{provider?}', 'Auth\AuthController@redirectToProvider');
-//Route::get('auth/{provider?}/callback', 'Auth\AuthController@handleProviderCallback');
 
-/*Route::get('/login/{provider?}',[
-    'uses' => 'AuthController@getSocialAuth',
-    'as'   => 'auth.getSocialAuth'
-]);
-*/
-
-/*Route::get('/login/callback/{provider?}',[
-    'uses' => 'AuthController@getSocialAuthCallback',
-    'as'   => 'auth.getSocialAuthCallback'
-]);*/
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +28,23 @@
 
 Route::group(['middleware' => ['web']], function () {
     //
-    Route::get('/', function () {
-    	return view('pages.home');
-	});
+    Route::get('/', 'HomeController@index');
+    Route::get('auth/logout',function(){
+        Auth::logout();
+        return redirect('/');
+    });
     Route::get('auth/{provider?}', 'Auth\AuthController@redirectToProvider');
 	Route::get('auth/{provider?}/callback', 'Auth\AuthController@handleProviderCallback');
+
+    Route::get('admin', function () {
+        return redirect('/admin/student');
+    });
+
+    Route::group([
+        'namespace' => 'Admin',
+        'middleware' => 'auth',
+    ], function () {
+        Route::resource('admin/student', 'StudentController');
+    });
+
 });

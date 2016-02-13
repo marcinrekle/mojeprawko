@@ -12,7 +12,7 @@
     <title>Laravel Social and Email Authentication</title>
 
     <!--  CSS -->
-    {!! HTML::style('/css/app.css') !!}
+    {!! Html::style('/css/app.css') !!}
 
     <!-- Custom styles for this template -->
 
@@ -89,6 +89,6 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-{!! HTML::script('/js/all.js') !!}
+{!! Html::script('/js/all.js') !!}
 </body>
 </html>

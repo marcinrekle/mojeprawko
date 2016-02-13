@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTableOld extends Migration
+class CreateHoursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateUsersTableOld extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password', 60);
-            $table->rememberToken();
+        Schema::create('hours', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
+            $table->tinyInteger('student_id')->unsigned()->index();
+            $table->decimal('count', 2, 1);
+            $table->date('drive_date');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateUsersTableOld extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('hours');
     }
 }
