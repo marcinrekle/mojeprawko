@@ -19,6 +19,7 @@ class CreateHoursTable extends Migration
             $table->foreign('student_id')->references('id')->on('students');
             $table->decimal('count', 2, 1);
             $table->tinyInteger('instructor_id')->unsigned()->index();
+            $table->foreign('instructor_id')->references('id')->on('instructors');
             $table->timestamps();
         });
     }

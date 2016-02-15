@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder
     {
         $users = App\User::all();
         foreach ($users as $user) {
-            if (!$user->is_admin) { 
+            if (!$user->is_admin && $user->id > 2) { 
                 $user->student()->save(factory(App\Student::class)->make());
             }
             
