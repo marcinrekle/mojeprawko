@@ -45,6 +45,9 @@ Route::group(['middleware' => ['web']], function () {
         'middleware' => 'auth',
     ], function () {
         Route::resource('admin/student', 'StudentController');
+        Route::resource('admin/student.hours', 'HourController');
+        Route::resource('admin/student.payments', 'PaymentController');
+        
     });
 
 });

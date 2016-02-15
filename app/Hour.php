@@ -22,7 +22,7 @@ class Hour extends Model
      */
     protected $hidden = [];
 
-    public function users()
+    public function students()
     {
     	return $this->belongsTo('App\Student');
     }

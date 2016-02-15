@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"re",
+				"request"
+			],
+			[
 				"cl",
 				"class_exists"
 			],
@@ -418,10 +422,69 @@
 			}
 		},
 		{
-			"file": "app/Http/routes.php",
+			"file": "config/auth.php",
 			"settings":
 			{
-				"buffer_size": 1330,
+				"buffer_size": 3530,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/auth/login-backup.blade.php",
+			"settings":
+			{
+				"buffer_size": 2246,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Hour.php",
+			"settings":
+			{
+				"buffer_size": 481,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/User.php",
+			"settings":
+			{
+				"buffer_size": 678,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Student.php",
+			"settings":
+			{
+				"buffer_size": 650,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Payment.php",
+			"settings":
+			{
+				"buffer_size": 472,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<?php\n\nnamespace App\\Http\\Controllers\\Auth;\n\nuse App\\User;\nuse App\\Student;\nuse Socialite;\nuse Auth;\nuse Validator;\nuse Illuminate\\Http\\Request;\nuse App\\Http\\Controllers\\Controller;\nuse Illuminate\\Foundation\\Auth\\ThrottlesLogins;\nuse Illuminate\\Foundation\\Auth\\AuthenticatesAndRegistersUsers;\n\nclass AuthController extends Controller\n{\n    /*\n    |--------------------------------------------------------------------------\n    | Registration & Login Controller\n    |--------------------------------------------------------------------------\n    |\n    | This controller handles the registration of new users, as well as the\n    | authentication of existing users. By default, this controller uses\n    | a simple trait to add these behaviors. Why don't you explore it?\n    |\n    */\n\n    use AuthenticatesAndRegistersUsers, ThrottlesLogins;\n\n    /**\n     * Where to redirect users after login / registration.\n     *\n     * @var string\n     */\n    protected $redirectTo = '/';\n\n    protected $redirectAfterLogout = '/';\n\n    /**\n     * Create a new authentication controller instance.\n     *\n     * @return void\n     */\n    public function __construct(Socialite $socialite)\n    {\n        $this->socialite = $socialite;\n        $this->middleware('guest', ['except' => 'logout']);\n    }\n\n    /**\n     * Get a validator for an incoming registration request.\n     *\n     * @param  array  $data\n     * @return \\Illuminate\\Contracts\\Validation\\Validator\n     */\n    protected function validator(array $data)\n    {\n        return Validator::make($data, [\n            'name' => 'required|max:255',\n            'email' => 'required|email|max:255|unique:users',\n            'password' => 'required|confirmed|min:6',\n        ]);\n    }\n\n    /**\n     * Create a new user instance after a valid registration.\n     *\n     * @param  array  $data\n     * @return User\n     */\n    protected function create(array $data)\n    {\n        return User::create([\n            'name' => $data['name'],\n            'email' => $data['email'],\n            'password' => bcrypt($data['password']),\n        ]);\n    }\n\n     public function redirectToProvider($provider=null)\n    {\n        return Socialite::driver($provider)->redirect();\n    }\n \n    /**\n     * Obtain the user information from Provider.\n     *\n     * @return Response\n     */\n    public function handleProviderCallback($provider=null)\n    {\n        \n        try {\n            $user = Socialite::driver($provider)->user();\n        } catch (Exception $e) {\n            return redirect('auth/' . $provider);\n        }\n \n        $authUser = $this->findOrCreateUser($user);\n \n        Auth::login($authUser, true);\n \n        return redirect('/');\n    }\n \n    /**\n     * Return user if exists; create and return if doesn't\n     *\n     * @param $facebookUser\n     * @return User\n     */\n    private function findOrCreateUser($socialUser)\n    {\n        $authUser = User::where('social_id', $socialUser->id)->first();\n \n        //var_dump($authUser);\n        \n        if ($authUser){\n            return $authUser;\n        }\n\n \n        $new = User::create([\n            'name' => $socialUser->name,\n            'email' => $socialUser->email,\n            'password' => '',\n            'social_id' => $socialUser->id,\n            'avatar' => $socialUser->avatar,\n            'social_token' => $socialUser->token,\n            'osk_id' => 1,\n            'is_admin' => '0',\n        ]);\n\n        $student = new Student;\n        $student->hours_count = 30;\n        $student->cost = 1400;\n        $new->student()->save($student);\n\n        //var_dump($socialUser);\n        //dd($new);\n        \n\n        return $new;\n\n        /*return User::create([\n            'name' => $socialUser->name,\n            'email' => $socialUser->email,\n            'password' => '',\n            'social_id' => $socialUser->id,\n            'avatar' => $socialUser->avatar\n        ]);*/\n\n    }\n}\n",
+			"file": "app/Http/Controllers/Auth/AuthController.php",
+			"file_size": 3903,
+			"file_write_time": 130997735533053585,
+			"settings":
+			{
+				"buffer_size": 3883,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Admin/PaymentController.php",
+			"settings":
+			{
+				"buffer_size": 1619,
 				"line_ending": "Unix"
 			}
 		},
@@ -429,15 +492,58 @@
 			"file": "app/Http/Controllers/Admin/StudentController.php",
 			"settings":
 			{
-				"buffer_size": 344,
+				"buffer_size": 1939,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+			"file": "resources/views/admin/student/index.blade.php",
 			"settings":
 			{
-				"buffer_size": 34471,
+				"buffer_size": 1715,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Admin/HourController.php",
+			"settings":
+			{
+				"buffer_size": 1928,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
+			"settings":
+			{
+				"buffer_size": 36859,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "@extends('layouts.app')\n\n@section('content')\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-8 col-md-offset-2\">\n        <div class=\"panel panel-default\">\n          <div class=\"panel-heading\">\n            <h3 class=\"panel-title\">Lista studentów</h3>\n          </div>\n          <div class=\"panel-body\">\n              \n            <table class=\"table table-stripped\">\n              <tr>\n                <th>Nazwa</th>\n                <th>Godziny</th>\n                <th>Płatności</th>\n                <th>Edycja</th>\n              </tr>\n\n                @foreach($students as $student)\n                <tr>\n                  <td><a href=\"{{route('admin.student.show',$student->id)}}\" >{{ $student->user->name }}</a></td>\n                  <td>{{$student->hours->sum('count') }} / {{ $student->hours_count }}</td>\n                  <td>{{$student->payments->sum('amount') }} / {{ $student->cost}}</td>\n                  <td>\n                    <a href=\"{{route('admin.student.edit',$student->id)}}\">Edytuj</a>\n                    <a href=\"{{route('admin.student.hours.create',$student->id)}}\">Dodaj godziny</a>\n                    <a href=\"{{route('admin.student.destroy',$student->id)}}\">Usuń</a>\n                    {!! Form::model($student, [\n                      'method' => 'DELETE',\n                      'route' => ['admin.student.destroy', $student->id]\n                    ]) !!}\n                    {!! Form::submit('Usuń', ['class' => 'warning']) !!}\n                    {!! Form::close() !!}\n                  </td>\n                </tr>\n                @endforeach\n\n            </table>\n\n            \n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n@stop",
+			"file": "resources/views/admin/student/hours/index.blade.php",
+			"file_size": 0,
+			"file_write_time": 130999188018848649,
+			"settings":
+			{
+				"buffer_size": 1715,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/routes.php",
+			"settings":
+			{
+				"buffer_size": 1567,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".env",
+			"settings":
+			{
+				"buffer_size": 732,
 				"line_ending": "Unix"
 			}
 		}
@@ -497,16 +603,19 @@
 		"/C/laragon/www/mojeprawko/app/Http",
 		"/C/laragon/www/mojeprawko/app/Http/Controllers",
 		"/C/laragon/www/mojeprawko/app/Http/Controllers/Admin",
+		"/C/laragon/www/mojeprawko/config",
+		"/C/laragon/www/mojeprawko/database",
 		"/C/laragon/www/mojeprawko/database/migrations",
+		"/C/laragon/www/mojeprawko/resources",
 		"/C/laragon/www/mojeprawko/resources/views",
+		"/C/laragon/www/mojeprawko/resources/views/admin",
+		"/C/laragon/www/mojeprawko/resources/views/admin/student",
 		"/C/laragon/www/mojeprawko/resources/views/auth"
 	],
 	"file_history":
 	[
-		"/C/laragon/www/mojeprawko/.env",
-		"/C/laragon/www/mojeprawko/app/Http/Controllers/Auth/AuthController.php",
-		"/C/laragon/www/mojeprawko/config/auth.php",
-		"/C/laragon/www/mojeprawko/resources/views/auth/login-backup.blade.php",
+		"/C/laragon/www/mojeprawko/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
+		"/C/laragon/www/mojeprawko/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php",
 		"/D/INSTALKI/DESIGN/www/SUBLIME 3 PORTABLE/Data/Packages/Default/Default (Windows).sublime-keymap",
 		"/C/laragon/www/mojeprawko/resources/views/partials/_nav.blade.php",
 		"/C/laragon/www/mojeprawko/resources/views/partials/_header.blade.php",
@@ -547,6 +656,7 @@
 		"/C/laragon/www/mojeprawko/resources/assets/sass/app.scss",
 		"/C/laragon/www/mojeprawko/resources/assets/bower/bootstrap-sass/assets/javascripts/ie10-viewport-bug-workaround.js",
 		"/C/laragon/www/mojeprawko/public/css/app.css",
+		"/C/laragon/www/mojeprawko/config/auth.php",
 		"/C/Users/marcin/.gitconfig",
 		"/C/laragon/www/mojeprawko/package.json",
 		"/C/laragon/www/mojeprawko/composer.json",
@@ -630,7 +740,8 @@
 		"/C/wamp/www/zpl_dev/zpl_new/com_sobipro/lib/sobi.php",
 		"/C/wamp/www/zpl_dev/zpl_new/com_sobipro/lib/base/header.php",
 		"/C/wamp/www/zpl_dev/zpl_new/com_sobipro/lib/cms/joomla_common/base/fs.php",
-		"/C/wamp/www/laravel/pj/vendor/laravelcollective/html/src/FormBuilder.php"
+		"/C/wamp/www/laravel/pj/vendor/laravelcollective/html/src/FormBuilder.php",
+		"/C/wamp/www/laravel/pj/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php"
 	],
 	"find":
 	{
@@ -693,7 +804,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"\\",
 			"sobipro.",
 			"E_USER_NOTICE",
 			".const",
@@ -820,7 +930,8 @@
 			"var_dump",
 			"die(",
 			"ContentParseRoute",
-			"hide_content_block"
+			"hide_content_block",
+			"itemid"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -840,7 +951,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -868,7 +979,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -897,30 +1008,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 14,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 2,
-					"file": "app/Http/routes.php",
+					"file": "config/auth.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1330,
+						"buffer_size": 3530,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1293,
-								1293
+								0,
+								0
 							]
 						],
 						"settings":
@@ -930,55 +1035,335 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "resources/views/auth/login-backup.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2246,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								127,
+								127
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/Hour.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 481,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								428,
+								428
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/User.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 678,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								205,
+								205
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/Student.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 650,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								401,
+								401
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/Payment.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 472,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								463,
+								463
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 8,
+					"file": "app/Http/Controllers/Auth/AuthController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3883,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2656,
+								2656
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1155.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/Http/Controllers/Admin/PaymentController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1619,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								525,
+								525
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 45.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/Http/Controllers/Admin/StudentController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1939,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								385,
+								385
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "resources/views/admin/student/index.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1715,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								1715
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/Http/Controllers/Admin/HourController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1928,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								382,
+								382
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 75.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "app/Http/Controllers/Admin/StudentController.php",
+					"buffer": 13,
+					"file": "vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 344,
+						"buffer_size": 36859,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								143,
-								143
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "vendor/laravel/framework/src/Illuminate/Routing/Router.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 34471,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8731,
-								8731
+								3264,
+								3264
 							]
 						],
 						"settings":
@@ -988,10 +1373,98 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4848.0,
+						"translation.y": 2420.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "resources/views/admin/student/hours/index.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1715,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1715,
+								1715
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/Http/routes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1567,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1451,
+								1451
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 231.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": ".env",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 732,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								674,
+								674
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 45.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
 					"type": "text"
 				}
 			]
@@ -1056,6 +1529,34 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"hours/",
+				"resources\\views\\admin\\student\\hours\\index.blade.php"
+			],
+			[
+				"hourc",
+				"app\\Http\\Controllers\\Admin\\HourController.php"
+			],
+			[
+				"index.b",
+				"resources\\views\\admin\\student\\index.blade.php"
+			],
+			[
+				"paymentc",
+				"app\\Http\\Controllers\\Admin\\PaymentController.php"
+			],
+			[
+				"rout",
+				"app\\Http\\routes.php"
+			],
+			[
+				"hour",
+				"app\\Hour.php"
+			],
+			[
+				"studentc",
+				"app\\Http\\Controllers\\Admin\\StudentController.php"
+			],
 			[
 				"login",
 				"resources\\views\\auth\\login.blade.php"
@@ -1393,7 +1894,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 217.0,
+	"side_bar_width": 140.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

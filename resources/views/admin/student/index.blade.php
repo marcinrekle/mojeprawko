@@ -25,8 +25,14 @@
                   <td>{{$student->payments->sum('amount') }} / {{ $student->cost}}</td>
                   <td>
                     <a href="{{route('admin.student.edit',$student->id)}}">Edytuj</a>
-                    <a href="{{route('admin.student.edit',$student->id)}}">Edytuj</a>
-                    <a href="{{route('admin.student.edit',$student->id)}}">Edytuj</a>
+                    <a href="{{route('admin.student.hours.create',$student->id)}}">Dodaj godziny</a>
+                    <a href="{{route('admin.student.destroy',$student->id)}}">Usuń</a>
+                    {!! Form::model($student, [
+                      'method' => 'DELETE',
+                      'route' => ['admin.student.destroy', $student->id]
+                    ]) !!}
+                    {!! Form::submit('Usuń', ['class' => 'warning']) !!}
+                    {!! Form::close() !!}
                   </td>
                 </tr>
                 @endforeach
