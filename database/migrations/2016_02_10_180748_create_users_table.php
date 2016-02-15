@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar',128);
             $table->string('remember_token',128);
             $table->string('social_token',128);
-            $table->tinyInteger('osk_id')->unsigned()->index();
+            $table->integer('osk_id')->unsigned()->index();
             $table->string('is_admin', 1);
             $table->timestamps();
         });
