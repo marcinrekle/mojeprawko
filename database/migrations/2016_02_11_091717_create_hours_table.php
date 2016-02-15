@@ -14,7 +14,7 @@ class CreateHoursTable extends Migration
     {
         Schema::create('hours', function (Blueprint $table) {
             //$table->increments('id')->unsigned();
-            $table->date('drive_date')->primary();
+            $table->date('drive_date');
             $table->integer('student_id')->unsigned()->index();
             $table->foreign('student_id')->references('id')->on('students');
             $table->decimal('count', 2, 1);

@@ -12,7 +12,7 @@ class Hour extends Model
      * @var array
      */
     protected $fillable = [
-        'student_id', 'count', 'drive_date', 
+        'student_id', 'count', 'drive_date', 'instructor_id', 
     ];
 
     /**

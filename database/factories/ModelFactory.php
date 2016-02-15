@@ -46,6 +46,7 @@ $factory->define(App\Hour::class, function (Faker\Generator $faker) {
     return [
         'count' 		=> $faker->numberBetween(1,2.5),
         'drive_date'	=> $faker->dateTimeBetween($startDate = '-3 months', $endDate = '+1 months'),
+        'instructor_id' => $faker->numberBetween(1,2),
     ];
 });
 
