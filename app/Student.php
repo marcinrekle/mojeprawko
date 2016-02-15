@@ -19,6 +19,11 @@ class Student extends Model
     	return $this->belongsTo('App\User');
     }
 
+    public function instructors()
+    {
+        return $this->belongsToMany('App\Instructor');
+    }
+
     public function hours()
     {
         return $this->hasMany('App\Hour');
