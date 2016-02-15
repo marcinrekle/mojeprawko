@@ -18,9 +18,9 @@ class HourController extends Controller
      */
     public function index($student_id)
     {
-        $student = Student::find(2)->toSql();
-        $tmp = [$student_id,$student];
-        dd($tmp);
+        $student = Student::findOrFail($student_id);
+        //$tmp = [$student_id,$student];
+        //dd($tmp);
         return view('admin.student.hours.index', compact('student'));
     }
 
