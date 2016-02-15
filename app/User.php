@@ -36,4 +36,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Student');
     }
 
+    public function instructor()
+    {
+        return $this->belongsTo('App\Instructor');
+    }
+
 }
