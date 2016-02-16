@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Student;
+use App\Instructor;
 
 class HourController extends Controller
 {
@@ -32,9 +33,12 @@ class HourController extends Controller
     public function create($student_id)
     {
         $student = Student::Find($student_id);
-        $tmp = [$student];
-        dd($tmp);
-        return view('admin.student.hours.create', compact('student'));
+        $instructorsList = Instructor::with('user')->get();
+        $instructors = $instructorsList->pluck('user')->pluck('name', 'id');
+        //$sql = Instructor::find(1)->toSQL();
+        $tmp = [$student,$instructorsList,$instructors];
+        //dd($tmp);
+        return view('admin.student.hours.create', compact('student', 'instructors'));
     }
 
     /**
