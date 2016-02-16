@@ -14,7 +14,7 @@
                   'route' => ['admin.student.hours.store', $student->id]
               ]) !!}
               
-              @include('admin.student.hours._form')
+              @include('admin.student.hours._form', ['submitBtnText' => 'Dodaj'])
               
             {!! Form::close() !!}
             
