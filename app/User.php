@@ -38,7 +38,7 @@ class User extends Authenticatable
 
     public function instructor()
     {
-        return $this->belongsTo('App\Instructor');
+        return $this->hasOne('App\Instructor');
     }
 
 }
