@@ -17,5 +17,6 @@ elixir(function(mix) {
     	'../bower/jquery/dist/jquery.min.js',
     	'../bower/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     	'../bower/bootstrap-sass/assets/javascripts/ie10-viewport-bug-workaround.js',
+    	'../js/admin.js',
     ]);
 });

@@ -18,9 +18,16 @@ class Instructor extends Model
     	return $this->belongsTo('App\User');
     }
 
-    public function students()
+    public function drives()
     {
-    	return $this->belongsToMany('App\Student');
+    	return $this->hasMany('App\Drive');
     }
+
+    public function drivesGtTomorrow()
+    {
+        return $this->hasMany('App\Drive')->where('date', '>', date('Y-m-d', strtotime('tomorrow')));
+    }
+
+    
 
 }

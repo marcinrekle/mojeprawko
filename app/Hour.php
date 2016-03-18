@@ -12,7 +12,7 @@ class Hour extends Model
      * @var array
      */
     protected $fillable = [
-        'student_id', 'count', 'drive_date', 'instructor_id', 
+        'id','student_id', 'count', 'drive_id',
     ];
 
     /**
@@ -22,8 +22,13 @@ class Hour extends Model
      */
     protected $hidden = [];
 
-    public function students()
+    public function student()
     {
     	return $this->belongsTo('App\Student');
+    }
+
+    public function drive()
+    {
+        return $this->belongsTo('App\Drive');
     }
 }

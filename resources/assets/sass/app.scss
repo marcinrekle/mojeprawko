@@ -1,1 +1,32 @@
 @import "../bower/bootstrap-sass/assets/stylesheets/bootstrap";
+.inline-block{
+	display: inline-block;
+}
+
+table.table td a, table.table td form{
+	display:inline-block;
+}
+
+.invisible{
+	display: none;
+}
+
+.studentActions {
+    display: inline-block;
+    float: right;
+}
+
+.tab-pane > .table > thead > tr > th{
+	border:none;
+}
+
+tr.no-border > th{
+	border: none;
+}
+.table > tbody > tr.no-border > th{
+	border: none;
+}
+
+.placeholder img{
+	border-radius: 50%;
+}

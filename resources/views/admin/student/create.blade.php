@@ -11,9 +11,10 @@
           <div class="panel-body">
               
             {!! Form::open( [
-                  
                   'route' => ['admin.student.store']
               ]) !!}
+
+              @include('auth._register')
               
               @include('admin.student._form', ['submitBtnText' => 'Dodaj'])
               

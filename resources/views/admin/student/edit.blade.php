@@ -10,10 +10,12 @@
           </div>
           <div class="panel-body">
               
-            {!! Form::model($student, [
+            {!! Form::model($student->user, [
                   'method' => 'PATCH',
                   'route' => ['admin.student.update', $student->id]
               ]) !!}
+
+              @include('auth._register')
               
               @include('admin.student._form', ['submitBtnText' => 'Edytuj'])
               

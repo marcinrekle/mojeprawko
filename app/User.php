@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'social_id', 'avatar', 'social_token', 'osk_id',
+        'name', 'email', 'social_id', 'avatar', 'social_token', 'osk_id', 'is_admin', 'password',
     ];
 
     /**
@@ -39,6 +39,10 @@ class User extends Authenticatable
     public function instructor()
     {
         return $this->hasOne('App\Instructor');
+    }
+
+    public function getFormValue($name){
+        return $this->$name;
     }
 
 }

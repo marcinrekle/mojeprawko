@@ -11,8 +11,8 @@ class OskTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Osk::class, 5)->create()->each(function($o) {
-    		for ($i=0; $i < 15; $i++) {
+        factory(App\Osk::class, 2)->create()->each(function($o) {
+    		for ($i=0; $i < 10; $i++) {
     			$o->users()->save(factory(App\User::class)->make());
     		}
   		});

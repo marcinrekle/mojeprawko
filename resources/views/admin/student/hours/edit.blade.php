@@ -9,11 +9,13 @@
             <h3 class="panel-title">{{$student->user->name}} - edytowanie jazdy</h3>
           </div>
           <div class="panel-body">
-              
+            <h4>{{ date('Y-m-d', strtotime($hour->drive->date))  }} z {{ $hour->drive->instructor->user->name }}</h4>
+            <br />  
             {!! Form::model( $hour, [
                   'method' => 'PATCH',
-                  'route' => ['admin.student.hours.update', $student->id]
+                  'route' => ['admin.student.hours.update', $student->id,$hour->id]
               ]) !!}
+              {!! Form::hidden('drive_id',old('drive_id')) !!}
               
               @include('admin.student.hours._form', ['submitBtnText' => 'Edytuj'])
               

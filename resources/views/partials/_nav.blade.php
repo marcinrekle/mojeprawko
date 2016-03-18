@@ -14,10 +14,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="{{ (Request::is('/admin') ? 'active' : '') }}">
-                    <a href="{{ URL::to('admin') }}"><i class="fa fa-home"></i> Home</a>
+                    <a href="{{ URL::to('admin') }}"><i class="fa fa-home"></i> Admin</a>
                 </li>
                 <li class="{{ (Request::is('admin/student') ? 'active' : '') }}">
                     <a href="{{ URL::to('admin/student') }}">Kursanci</a>
+                </li>
+                <li class="{{ (Request::is('admin/instructor') ? 'active' : '') }}">
+                    <a href="{{ URL::to('admin/instructor') }}">Instruktorzy</a>
                 </li>
                 <li class="{{ (Request::is('pomoc') ? 'active' : '') }}">
                     <a href="{{ URL::to('pomoc') }}">Pomoc</a>

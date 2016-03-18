@@ -35,7 +35,9 @@ Route::group(['middleware' => ['web']], function () {
     });
     Route::get('auth/{provider?}', 'Auth\AuthController@redirectToProvider');
 	Route::get('auth/{provider?}/callback', 'Auth\AuthController@handleProviderCallback');
-
+    Route::get('student', 'StudentController@index');
+    Route::resource('student.hours', 'Admin\HourController', ['only' => ['store', 'destroy']]);
+    
     Route::get('admin', function () {
         return redirect('/admin/student');
     });
@@ -47,7 +49,10 @@ Route::group(['middleware' => ['web']], function () {
         Route::resource('admin/student', 'StudentController');
         Route::resource('admin/student.hours', 'HourController');
         Route::resource('admin/student.payments', 'PaymentController');
-        
+        Route::resource('admin/instructor', 'InstructorController');
+        Route::resource('admin/instructor.drives', 'DriveController');
+        Route::resource('admin/drives.student.hours', 'DriveStudentHourController', ['only' => ['store', 'update', 'destroy']]);
+
     });
 
 });

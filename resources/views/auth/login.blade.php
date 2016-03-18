@@ -52,6 +52,6 @@
     <p class="or-social">Or Use Social Login</p>
 
     <a href="auth/facebook" class="btn btn-lg btn-primary btn-block facebook" role="button">Facebook</a>
-    <a href="auth/google" class="btn btn-lg btn-primary btn-block twitter" role="button">Twitter</a>
+    <a href="auth/google" class="btn btn-lg btn-primary btn-block twitter" role="button">Gmail</a>
 
 @stop

@@ -11,8 +11,8 @@
 <div class="alert alert-success alert-block">
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
 	<h4>Sukces</h4>
-	@if(is_array($message)) @foreach ($message as $m) {{ $m }} @endforeach
-	@else {{ $message }} @endif
+	@if(is_array($message)) @foreach ($message as $m) {!! $m !!} @endforeach
+	@else {!! $message !!} @endif
 </div>
 @endif @if ($message = Session::get('error'))
 <div class="alert alert-danger alert-block">

@@ -12,21 +12,26 @@ class Student extends Model
      *
      * @var array
      */
-    protected $fillable = ['hours_count', 'cost'];
+    protected $fillable = ['hours_count', 'hours_start','cost'];
 
     public function user()
     {
     	return $this->belongsTo('App\User');
     }
 
-    public function instructors()
+    /*public function instructors()
     {
         return $this->belongsToMany('App\Instructor');
-    }
+    }*/
 
     public function hours()
     {
         return $this->hasMany('App\Hour');
+    }
+    public function hoursWeek()
+    {
+        $week = 10;
+        return $this->hours()->with('drive');
     }
 
     public function payments()
