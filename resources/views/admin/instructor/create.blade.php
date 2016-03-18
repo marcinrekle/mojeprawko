@@ -16,6 +16,8 @@
               
               @include('auth._register')
 
+              @include('admin.instructor._form', ['submitBtnText' => 'Dodaj'])
+
               {!! Form::submit('Dodaj', ['class' => 'btn btn-primary']) !!}
               
             {!! Form::close() !!}

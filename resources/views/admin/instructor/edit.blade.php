@@ -17,6 +17,8 @@
 
               @include('auth._register')
               
+              @include('admin.instructor._form', ['submitBtnText' => 'Edytuj'])
+
               {!! Form::submit('Edytuj', ['class' => 'btn btn-primary']) !!}
               
             {!! Form::close() !!}
