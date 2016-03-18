@@ -19,7 +19,7 @@ class CreateStudentsTable extends Migration
             $table->integer('hours_count')->unsigned();
             $table->integer('hours_start')->unsigned()->default(0);
             $table->integer('cost')->unsigned();
-            $table->string('status',16);
+            $table->string('status',16)->default('active');
             $table->timestamps();
         });
     }
