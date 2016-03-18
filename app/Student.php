@@ -12,7 +12,7 @@ class Student extends Model
      *
      * @var array
      */
-    protected $fillable = ['hours_count', 'hours_start','cost'];
+    protected $fillable = ['hours_count', 'hours_start','cost','status'];
 
     public function user()
     {
