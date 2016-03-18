@@ -80,7 +80,7 @@ class StudentController extends Controller
             'email'         => 'required|email|max:255|unique:users,id',
             'password'      => 'min:6|max:64',
             'hours_count'   => 'required|numeric|min:1|max:128',
-            'hours_count'   => 'required|numeric|min:0|max:128',
+            'hours_start'   => 'required|numeric|min:0|max:128',
             'cost'          => 'required|numeric|min:30|max:5000',
         ]);
     }
