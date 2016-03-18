@@ -91,7 +91,6 @@ class AuthController extends Controller
      */
     public function handleProviderCallback($provider=null)
     {
-        var_dump($provider);
         try {
             $user = Socialite::driver($provider)->user();
         } catch (Exception $e) {
@@ -152,5 +151,10 @@ class AuthController extends Controller
             'avatar' => $socialUser->avatar
         ]);*/
 
+    }
+
+    public function confirm($id, $code)
+    {
+        dd([$code, $id]);
     }
 }

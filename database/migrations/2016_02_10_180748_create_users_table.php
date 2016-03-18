@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('social_token',128);
             $table->integer('osk_id')->unsigned()->index();
             $table->string('is_admin', 1);
+            $table->boolean('confirmed')->default('false');
+            $table->string('confirm_code', 32);
             $table->timestamps();
         });
     }

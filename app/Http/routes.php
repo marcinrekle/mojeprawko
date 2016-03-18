@@ -35,6 +35,8 @@ Route::group(['middleware' => ['web']], function () {
     });
     Route::get('auth/{provider?}', 'Auth\AuthController@redirectToProvider');
 	Route::get('auth/{provider?}/callback', 'Auth\AuthController@handleProviderCallback');
+    Route::get('auth/confirm/{uid}/{code}', 'Auth\AuthController@confirm');
+
     Route::get('student', 'StudentController@index');
     Route::resource('student.hours', 'Admin\HourController', ['only' => ['store', 'destroy']]);
     

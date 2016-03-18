@@ -95,11 +95,15 @@ class StudentController extends Controller
     {
         $validator = $this->validator($request->all());
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
-        $user = User::create($request->all());
+        $tmp = $request->all();
+        $tmp['confirm_code'] = str_random(32);
+        $user = User::create($tmp);
         $student = new Student;
         $student->fill($request->all());
         $user->student()->save($student);
-        return redirect()->back()->withSuccess('Dodano kursanta');//change redirect to student profil
+        $confirm_link = url('auth/confirm',[$user->id,$tmp['confirm_code']]);
+        //dd($confirm_link);
+        return redirect()->route('admin.student.show', [$user->student->id])->withSuccess("Dodano kursanta. <br /> Link do potwierdzenia konta <a href='http://mojeprawko.dev/auth/confirm/25/l5zbIBK4s6L13vQrfmiqIiovQFt9SFJg'>http://mojeprawko.dev/auth/confirm/25/l5zbIBK4s6L13vQrfmiqIiovQFt9SFJg</a>");//change redirect to student profil
     }
 
     public function edit($id)

@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'social_id', 'avatar', 'social_token', 'osk_id', 'is_admin', 'password',
+        'name', 'email', 'social_id', 'avatar', 'social_token', 'osk_id', 'is_admin', 'password','confirm_code','confirmed'
     ];
 
     /**
@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','is_admin',
+        'password', 'remember_token','is_admin','confirmed','confirm_code','social_token'
     ];
 
     public function osk()
