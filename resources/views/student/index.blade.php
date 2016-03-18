@@ -12,12 +12,18 @@
               
             <table class="table table-striped">
               <tr>
+                <th></th>
                 <th>Godziny</th>
                 <th>Płatności</th>
                 <th>Jazdy w tygodniu</th>
                 <th>Edycja</th>
               </tr>
                 <tr>
+                  <td>
+                    <div class="placeholder">
+                      <img src="{{$student->user->avatar}}" class="img-responsive">
+                    </div>
+                  </td>
                   <td>{{$student->hours->sum('count') + $student->hours_start }} / {{ $student->hours_count }}</td>
                   <td>{{$student->payments->sum('amount') }} / {{ $student->cost }}</td>
                   @if( $studentCanDrive )
