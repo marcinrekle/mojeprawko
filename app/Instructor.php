@@ -11,7 +11,7 @@ class Instructor extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id'];
+    protected $fillable = ['user_id','status'];
 
     public function user()
     {
