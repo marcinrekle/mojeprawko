@@ -6,7 +6,7 @@
       <div class="col-md-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Lista studentów <a href="admin/student/create" class="pull-right"><i class="fa fa-plus"></i></a></h3>
+            <h3 class="panel-title">Lista studentów <a href="/admin/student/create" class="pull-right"><i class="fa fa-plus"></i></a></h3>
           </div>
           <div class="panel-body">
               
