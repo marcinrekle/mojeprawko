@@ -18,7 +18,7 @@
 
                 @foreach($instructors as $instructor)
                 <tr>
-                  <td><a href="{{route('admin.instructor.show',$instructor->id)}}" >{{ $instructor->user->name }}</a></td>
+                  <td><img class="img-responsive img-circle avatar avatar-small" src="{{$instructor->user->avatar}}"/><a href="{{route('admin.instructor.show',$instructor->id)}}" >{{ $instructor->user->name }}</a></td>
                   <td>
                     @include('admin.instructor._options', [$instructor])
                   </td>

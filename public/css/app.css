@@ -5774,4 +5774,14 @@ tr.no-border > th {
 .placeholder img {
   border-radius: 50%; }
 
+img.avatar {
+  display: inline-block;
+  margin: 0 10px 0 0; }
+
+img.avatar.avatar-small {
+  width: 30px; }
+
+img.avatar.avatar-big {
+  width: 100px; }
+
 /*# sourceMappingURL=app.css.map */

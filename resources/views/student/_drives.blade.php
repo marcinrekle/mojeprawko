@@ -15,7 +15,7 @@
       <td>{{ date('Y-m-d', strtotime($drive->date)) }}</td>
       @foreach($drive->hours as $hour)
       <td data-hid="{{$hour->id}}" data-sid="{{ $hour->student->id }}" data-week="{{ $key }}">
-        <img src="{{ $hour->student->user->avatar }}" />
+        <img src="{{ $hour->student->user->avatar }}" class="img-responsive img-circle avatar avatar-small" />
         <span>
         @if(auth::user()->is_admin)
           <a href="{{route('admin.student.show',$hour->student->id)}} ">{{ $hour->student->user->name }}</a>

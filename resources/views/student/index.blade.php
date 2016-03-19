@@ -21,7 +21,7 @@
                 <tr>
                   <td>
                     <div class="placeholder">
-                      <img src="{{$student->user->avatar}}" class="img-responsive">
+                      <img src="{{$student->user->avatar}}" class="img-responsive img-circle avatar avatar-big">
                     </div>
                   </td>
                   <td>{{$student->hours->sum('count') + $student->hours_start }} / {{ $student->hours_count }}</td>

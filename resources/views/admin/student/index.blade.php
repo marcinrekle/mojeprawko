@@ -20,7 +20,7 @@
 
                 @foreach($students as $student)
                 <tr>
-                  <td><a href="{{route('admin.student.show',$student->id)}}" >{{ $student->user->name }}</a></td>
+                  <td><img class="img-responsive img-circle avatar avatar-small" src="{{$student->user->avatar}}"/><a href="{{route('admin.student.show',$student->id)}}" >{{ $student->user->name }}</a></td>
                   <td>{{$student->hours->sum('count') }} / {{ $student->hours_count }}</td>
                   <td>{{$student->payments->sum('amount') }} / {{ $student->cost}}</td>
                   <td>
