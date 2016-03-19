@@ -6,52 +6,40 @@
 
 @section('content')
 
-
-    <div class="container-fluid">
-        <div class="row">
-            {!! Form::open(array('url' => URL::to('auth/login'), 'method' => 'post', 'files'=> true)) !!}
-            <div class="form-group  {{ $errors->has('email') ? 'has-error' : '' }}">
-                {!! Form::label('email', "E-Mail Address", array('class' => 'control-label')) !!}
-                <div class="controls">
-                    {!! Form::text('email', null, array('class' => 'form-control')) !!}
-                    <span class="help-block">{{ $errors->first('email', ':message') }}</span>
-                </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Logowanie</h3>
+            </div>
+            <div class="panel-body">
+              
+            {!! Form::open(array('url' => URL::to('auth/login'), 'method' => 'post')) !!}
+            <div class="form-group  {{ $errors->has('password') ? 'has-error' : '' }}">
+                {!! Form::label('email', "E-mail", array('class' => 'control-label')) !!}
+                {!! Form::text('email', old('email'), array('class' => 'form-control', 'placeholder' => 'Adres E-mail')) !!}
+                <span class="help-block">{{ $errors->first('email', ':message') }}</span>
             </div>
             <div class="form-group  {{ $errors->has('password') ? 'has-error' : '' }}">
-                {!! Form::label('password', "Password", array('class' => 'control-label')) !!}
-                <div class="controls">
-                    {!! Form::password('password', array('class' => 'form-control')) !!}
-                    <span class="help-block">{{ $errors->first('password', ':message') }}</span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="remember"> Remember Me
-                        </label>
-                    </div>
-                </div>
+                {!! Form::label('password', "Hasło", array('class' => 'control-label')) !!}
+                {!! Form::password('password', array('class' => 'form-control', 'placeholder' => 'Hasło')) !!}
+                <span class="help-block">{{ $errors->first('password', ':message') }}</span>
             </div>
 
-            <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                    <button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-                        Login
-                    </button>
-
-                    <a href="{{ URL::to('/password/email') }}">Forgot Your Password?</a>
-                </div>
-            </div>
+            {!! Form::submit('Zaloguj', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
+            <br />
+            lub
+            <br />
+            <br />
+            <a href="/auth/facebook" class="btn btn-primary" role="button"><i class="fa fa-facebook-official fa-lg"></i> Zaloguj z Facebook</a>
+            <a href="/auth/google" class="btn btn-danger" role="button"><i class="fa fa-google fa-lg"></i> Zaloguj z Gmail</a>
+            
+            </div>
+        </div>
         </div>
     </div>
-
-
-
-    <p class="or-social">Or Use Social Login</p>
-
-    <a href="auth/facebook" class="btn btn-lg btn-primary btn-block facebook" role="button">Facebook</a>
-    <a href="auth/google" class="btn btn-lg btn-primary btn-block twitter" role="button">Gmail</a>
+</div>
 
 @stop

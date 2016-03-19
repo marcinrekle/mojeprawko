@@ -7,6 +7,7 @@ use App\Student;
 use Socialite;
 use Auth;
 use Validator;
+use Cookie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -79,7 +80,7 @@ class AuthController extends Controller
         ]);
     }
 
-     public function redirectToProvider($provider=null)
+     public function redirectToProvider(Request $request, $provider=null)
     {
         return Socialite::driver($provider)->redirect();
     }
@@ -89,7 +90,7 @@ class AuthController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback($provider=null)
+    public function handleProviderCallback(Request $request, $provider=null)
     {
         try {
             $user = Socialite::driver($provider)->user();
@@ -97,7 +98,7 @@ class AuthController extends Controller
             return redirect('auth/' . $provider);
         }
  
-        $authUser = $this->findOrCreateUser($user);
+        $authUser = $this->findOrCreateUser($user, $request);
  
         Auth::login($authUser, true);
  
@@ -110,51 +111,64 @@ class AuthController extends Controller
      * @param $facebookUser
      * @return User
      */
-    private function findOrCreateUser($socialUser)
+    private function findOrCreateUser($socialUser, $request)
     {
-        $authUser = User::where('social_id', $socialUser->id)->first();
+        //$authUser = User::where('social_id', $socialUser->id)->first();
  
         //var_dump($authUser);
         
-        if ($authUser){
+        /*if ($authUser){
             return $authUser;
-        }
+        }*/
 
- 
-        $new = User::create([
-            'name' => $socialUser->name,
-            'email' => $socialUser->email,
-            'password' => '',
-            'social_id' => $socialUser->id,
-            'avatar' => $socialUser->avatar,
-            'social_token' => $socialUser->token,
-            'osk_id' => 1,
-            'is_admin' => '0',
-        ]);
-
-        $student = new Student;
-        $student->hours_count = 30;
-        $student->cost = 1400;
-        $new->student()->save($student);
-
-        //var_dump($socialUser);
-        //dd($new);
+        $user = User::whereId($request->session()->pull('cuid', 'default'))->where('confirm_code', $request->session()->pull('ccode', 'default'))->whereConfirmed(false)->first();
+        $user->social_id = $socialUser->id;
+        $user->avatar = $socialUser->avatar;
+        //$user->confirmed = true;//change - remove comment
+        $user->save();
         
+        Auth::login($authUser, true);
+ 
+        return redirect('/')->withSuccess('Aktywacja konta zakończona.');
 
-        return $new;
-
-        /*return User::create([
-            'name' => $socialUser->name,
-            'email' => $socialUser->email,
-            'password' => '',
-            'social_id' => $socialUser->id,
-            'avatar' => $socialUser->avatar
-        ]);*/
 
     }
 
-    public function confirm($id, $code)
+    public function confirm(Request $request, $id, $code)
     {
-        dd([$code, $id]);
+        $user = User::whereId($id)->where('confirm_code', $code)->whereConfirmed(false)->first();
+        if(! $user) {
+            return redirect()->route('home')->withErrors("Próbujesz się podać za kogoś innego lub konto jest już aktywne");
+        }
+        $request->session()->put(['cuid' => $id, 'ccode' => $code]);
+        return view('auth.confirm',compact('user','id','code'));
+    }
+
+    public function confirmSetPassword (Request $request)
+    {
+        $req = $request->all();
+        $validator = $this->passwordValidator($req);
+        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
+        $user = User::whereId($req['id'])->where('confirm_code', $req['code'])->first();
+        if($user){
+            $user->password = bcrypt($req['password']);
+            //$user->confirmed = true;//change - remove comment
+            $user->save();
+            //Auth::login($authUser, true);
+            if (Auth::attempt(['email' => $user->email, 'password' => $user->$password, 'confirm' => true])) {
+                return redirect()->route('student')->withSuccess('Aktywacja konta zakończona.');
+            } else {
+                return redirect()->route('home')->withSuccess('Aktywacja konta zakończona.');
+            }
+        } else {
+            return redirect()->route('home')->withErrors("Próbujesz się podać za kogoś innego");
+        }
+    }
+
+    protected function passwordValidator ( array $data) 
+    {
+        return Validator::make($data, [
+            'password' => 'required|min:6|max:64',
+        ]);
     }
 }
