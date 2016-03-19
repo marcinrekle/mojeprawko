@@ -113,13 +113,13 @@ class AuthController extends Controller
      */
     private function findOrCreateUser($socialUser, $request)
     {
-        //$authUser = User::where('social_id', $socialUser->id)->first();
+        $authUser = User::where('social_id', $socialUser->id)->first();
  
         //var_dump($authUser);
         
-        /*if ($authUser){
+        if ($authUser){
             return $authUser;
-        }*/
+        }
 
         $user = User::whereId($request->session()->pull('cuid', 'default'))->where('confirm_code', $request->session()->pull('ccode', 'default'))->whereConfirmed(false)->first();
         $user->social_id = $socialUser->id;
