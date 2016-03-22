@@ -88,13 +88,14 @@ class InstructorController extends Controller
     public function show($id)
     {
         //var_dump(microtime());
-        $test = [];
-        $test[12] = ['id' => 12, 'payed' => 1000, 'dtw' => 2];
         
         $thisWeekStart = Carbon::parse('this week 0:00');
 
-        $instructor = Instructor::findOrFail($id); 
-        $drives = Instructor::findOrFail($id)->drives()->with('hours.student.user')->get()->sortByDesc('date');
+        $instructor = Instructor::findOrFail($id);
+        $drives = $instructor->drives()->orderBy('date','desc')->paginate(30);
+        //dump($drives);
+        //dd($drives);
+        //$drives = Instructor::findOrFail($id)->drives()->with('hours.student.user')->get()->sortByDesc('date');
         $students = Student::where('id','>',5)->with('user')->get()->sortBy('user.name')->pluck('user.name', 'id')->toArray();
         
         $studentsCanDrive = Student::where('id','>',5)->with('hours.drive')->with('payments')->get()->keyBy('id')->sortBy('id');

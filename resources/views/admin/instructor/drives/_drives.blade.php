@@ -11,7 +11,7 @@
         {{Auth::user()->payments}}
       @endif
 
-    @foreach($instructor->drives->sortByDesc('date') as $key => $drive)
+    @foreach($drives->load('hours.student.user') as $key => $drive)
     <tr data-did="{{ $drive->id }}" data-week="{{ $key }}">
       <td>
         @if( auth::user()->is_admin )  
@@ -67,3 +67,4 @@
     </tr>
     @endforeach
 </table>
+{!! $drives->links() !!}
