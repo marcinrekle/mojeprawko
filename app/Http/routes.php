@@ -47,7 +47,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group([
         'namespace' => 'Admin',
-        'middleware' => 'auth',
+        'middleware' => ['auth','Admin'],
     ], function () {
         Route::resource('admin/student', 'StudentController');
         Route::resource('admin/student.hours', 'HourController');
