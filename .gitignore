@@ -9,6 +9,8 @@ Homestead.json
 .env.*.php
 .env.php
 .sublime-project
+.sublime-workspace
+/public/img
 =======
 vendor/
 node_modules/

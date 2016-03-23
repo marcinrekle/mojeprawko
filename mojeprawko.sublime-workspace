@@ -4,20 +4,80 @@
 		"selected_items":
 		[
 			[
-				"drives",
+				"with",
+				"withSuccess"
+			],
+			[
+				"social",
+				"socialUser"
+			],
+			[
+				"socia",
+				"socialUser"
+			],
+			[
+				"where",
+				"whereId"
+			],
+			[
+				"Cooki",
+				"Cookie::forever	Make a Permanent Cookie"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"conf",
+				"confirm_code"
+			],
+			[
+				"fun",
+				"fun	function …"
+			],
+			[
+				"Route",
+				"Route"
+			],
+			[
+				"sort",
+				"sortByDesc"
+			],
+			[
+				"dr",
 				"drivesTW"
 			],
 			[
+				"s",
+				"studentCanDrive"
+			],
+			[
 				"drive",
+				"drivesPerWeek"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"instr",
+				"instructors"
+			],
+			[
+				"ins",
+				"instructor"
+			],
+			[
+				"st",
+				"Student"
+			],
+			[
+				"drives",
 				"drivesTW"
 			],
 			[
 				"dri",
 				"drivesTW"
-			],
-			[
-				"for",
-				"for	for …"
 			],
 			[
 				"student",
@@ -32,20 +92,12 @@
 				"studentCanDriveGtThisWeek"
 			],
 			[
-				"st",
-				"studentCanDrive"
-			],
-			[
 				"col",
 				"collection"
 			],
 			[
 				"q",
 				"query"
-			],
-			[
-				"fun",
-				"function"
 			],
 			[
 				"to",
@@ -61,10 +113,6 @@
 			],
 			[
 				"se",
-				"sections"
-			],
-			[
-				"s",
 				"sections"
 			],
 			[
@@ -453,19 +501,123 @@
 			}
 		},
 		{
-			"contents": "ROUTES\n	\n	su\n		- osk\n		- users\n		- payments\n	\n	admin\n		- user\n		- osk\n	user\n		- profile\n		- summary\n\n\nTABLES\n	user\n		- id\n		- name\n		- email\n		- password\n		- social_id\n		- avatar\n		- created_at\n		- updated_at\n\n\n	role\n		- id\n		- name\n		- description\n\n\n	permission\n		- name\n\n\n\n	relation\n		- user_id\n		- permission_id\n\n\n	",
+			"contents": "ROUTES\n	\n	su\n		- osk\n		- users\n		- payments\n	\n	admin\n		- user\n		- osk\n	user\n		- profile\n		- summary\n\n\nTABLES\n	user\n		- id\n		- name\n		- email\n		- password\n		- social_id\n		- avatar\n		- created_at\n		- updated_at\n\n\n	role\n		- id\n		- name\n		- description\n\n\n	permission\n		- name\n\n\n\n	relation\n		- user_id\n		- permission_id\n\n\n		",
 			"settings":
 			{
-				"buffer_size": 318,
+				"buffer_size": 319,
 				"line_ending": "Windows",
 				"name": "ROUTES"
 			}
 		},
 		{
-			"file": "resources/views/admin/student/hours/_hours.blade.php",
+			"file": "app/Http/Controllers/Admin/StudentController.php",
 			"settings":
 			{
-				"buffer_size": 850,
+				"buffer_size": 5402,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Middleware/EncryptCookies.php",
+			"settings":
+			{
+				"buffer_size": 312,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/routes.php",
+			"settings":
+			{
+				"buffer_size": 2143,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/auth/login.blade.php",
+			"settings":
+			{
+				"buffer_size": 1886,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/auth/confirm.blade.php",
+			"settings":
+			{
+				"buffer_size": 1593,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/partials/_footer.blade.php",
+			"settings":
+			{
+				"buffer_size": 346,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/assets/sass/app.scss",
+			"settings":
+			{
+				"buffer_size": 603,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/admin/instructor/show.blade.php",
+			"settings":
+			{
+				"buffer_size": 1429,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/admin/instructor/drives/_drives.blade.php",
+			"settings":
+			{
+				"buffer_size": 2702,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Auth/AuthController.php",
+			"settings":
+			{
+				"buffer_size": 5283,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/admin/student/index.blade.php",
+			"settings":
+			{
+				"buffer_size": 1360,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Admin/InstructorController.php",
+			"settings":
+			{
+				"buffer_size": 7775,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/student/index.blade.php",
+			"settings":
+			{
+				"buffer_size": 2519,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/student/_drives.blade.php",
+			"settings":
+			{
+				"buffer_size": 2878,
 				"line_ending": "Windows"
 			}
 		},
@@ -473,90 +625,15 @@
 			"file": "resources/views/admin/student/show.blade.php",
 			"settings":
 			{
-				"buffer_size": 1688,
+				"buffer_size": 2347,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/views/student/_reserve.blade.php",
+			"file": "app/User.php",
 			"settings":
 			{
-				"buffer_size": 524,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse Illuminate\\Http\\Request;\n\nuse App\\Http\\Requests;\nuse App\\Http\\Controllers\\Controller;\n\nuse Carbon\\Carbon;\n\nuse App\\Instructor;\nuse App\\Student;\nuse App\\Drive;\n\nclass InstructorController extends Controller\n{\n   \n    protected function validator(array $data)\n    {\n        return Validator::make($data, [\n            'name'          => 'required|max:255',\n            'email'         => 'required|email|max:255|unique:users,id',\n            'password'      => 'min:6|max:64',\n        ]);\n    }\n\n    protected function canDriveInWeek( $items, $weekStartDate )\n    {\n        return $items->filter( function ($item) use ($weekStartDate) {\n            //dump( \"id = $item->id\" );\n            $sum = $item->payments->sum('amount');\n            //dump( \"sum = $sum\");\n            $hc = $item->hours->count();\n            //dump( \"hc = $hc\");\n            $dtw = $item->hours->groupBy('drive.date')->filter( function ( $value, $key) use ($weekStartDate) {\n                    return $key > $weekStartDate && $key < Carbon::parse( $weekStartDate)->addWeek();\n            })->count();\n            return ( $sum > 199 && $sum < 500 && $dtw < 1 ) || ( $sum >= 500  && $sum < 1000 && $dtw < 2 ) || ( $sum > 1000 && $dtw < 3 );\n        })->load('user')->pluck('user.name', 'id');\n        \n    }\n\n    /**\n     * Display a listing of the resource.\n     *\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function index()\n    {\n        $instructors = Instructor::with('user')->get();\n        return view('admin.instructor.index', ['instructors' => $instructors]);\n    }\n\n    /**\n     * Show the form for creating a new resource.\n     *\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function create()\n    {\n        return view('admin.instructor.create');\n    }\n\n    /**\n     * Store a newly created resource in storage.\n     *\n     * @param  \\Illuminate\\Http\\Request  $request\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function store(Request $request)\n    {\n        $validator = $this->validator($request->all());\n        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();\n        $user = User::create($request->all());\n        $instructor = new Instructor;\n        $instructor->fill($request->all());\n        $user->instructor()->save($instructor);\n        return redirect()->back()->withSuccess('Dodano kursanta');//change redirect to instructor profil\n    }\n\n    /**\n     * Display the specified resource.\n     *\n     * @param  int  $id\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function show($id)\n    {\n        //var_dump(microtime());\n        $test = [];\n        $test[12] = ['id' => 12, 'payed' => 1000, 'dtw' => 2];\n        \n        $thisWeekStart = Carbon::parse('this week 0:00');\n\n        $instructor = Instructor::findOrFail($id); \n        $drives = Instructor::findOrFail($id)->drives()->with('hours.student.user')->get()->sortByDesc('date');\n        $students = Student::where('id','>',5)->with('user')->get()->sortBy('user.name')->pluck('user.name', 'id')->toArray();\n        \n        $studentsCanDrive = Student::where('id','>',5)->with('hours.drive')->with('payments')->get()->keyBy('id')->sortBy('id');\n        \n        $studentsCanDrive = $studentsCanDrive->filter(function ( $value, $key ){\n            return $value->hours->sum('count')+$value->hours_start < $value->hours_count; \n        });\n            //dump($studentsCanDrive->toArray());\n        \n        \n        $drivesThisWeek = Drive::where( \\DB::raw(\"WEEK(date)\"), \"=\", \\DB::raw(\"WEEK(NOW())\") )->with('hours')->with('hours')->get()->keyBy('id');\n        $list = $drivesThisWeek->map( function($item) {\n            $a = $item->hours->keyBy('student_id')->keys()->implode(',');\n            //$b = $item->hours->keyBy('student_id')->keys()->toArray();\n            //dump( $item->hours->flatten() );\n            //dump( $b );\n            \n            return $a;\n        });\n        //dump($list);\n        $tes = $drivesThisWeek->map( function ($item, $key) {\n            $a = $item->hours->map(function ($item, $key){\n                //dump($item['student_id']);      \n                return ['student_id' => $item['student_id']];\n            });\n            return $a;\n        });\n        //dump( $tes ); \n        //dump($drivesThisWeek);\n\n\n\n        $studentHC = Student::where('id','>',5)->with('hours')->with('payments')->get();\n        $s2 = Student::where('id','>',5)->with('hours.drive')->get()->keyBy('id');\n    \n        $s2 = $s2->map( function( $item, $key ){\n            //dd( $item->toArray() );\n        } );\n        //dd($s2->toArray());\n        $studenty = Student::where('id','>',5)->with('hours.drive')->with('payments')->get()->sortBy('id');\n        \n        $studenty = $studenty->filter(function ( $value, $key ){\n            return $value->hours->sum('count') < $value->hours_count; \n        });\n        $studentPaymentsList = $studenty->keyBy('id');\n        $studentPaymentsList2 = $studentPaymentsList->map(function($item, $key){\n            return $item->hours;\n        });\n        //dd($studentPaymentsList2->toArray());\n        \n        $can3 = $studenty->filter(function ( $value, $key ){\n            return $value->payments->sum('amount') >= 1000; \n        });\n        $can2 = $studenty = $studenty->filter(function ( $value, $key ){\n            return $value->payments->sum('amount') < 1000 && $value->payments->sum('amount') > 500 ; \n        });\n        $can1 = $studenty = $studenty->filter(function ( $value, $key ){\n            return $value->payments->sum('amount') < 500 && $value->payments->sum('amount') > 200 ; \n        });\n\n        /*foreach ($studenty as $student) {\n            var_dump( $student->id );\n            var_dump( $student->payments->sum('amount') );\n        }*/\n        //dd($jazdy);\n\n        //$drives = $instructor::with('drives.hours.student.user')->get()->toArray();\n\n        //dd([$instructor, $instructor2, $instructor3,$drives]);\n        $students = $this->canDriveInWeek( $studentsCanDrive, $thisWeekStart);\n\n        return view('admin.instructor.show', compact('instructor', 'drives', 'students'));\n    }\n\n    /**\n     * Show the form for editing the specified resource.\n     *\n     * @param  int  $id\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function edit($id)\n    {\n        $instructor = Instructor::findOrFail($id);\n        return view('admin.instructor.edit', compact('instructor'));\n    }\n\n    /**\n     * Update the specified resource in storage.\n     *\n     * @param  \\Illuminate\\Http\\Request  $request\n     * @param  int  $id\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function update(Request $request, $id)\n    {\n        $validator = $this->validator($request->all());\n        $instructor = Instructor::findOrFail($id);\n        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();\n        $user = $instructor->user;\n        $user->update($request->all()->expect('password'));\n        if($request->get('password') != \"\"){\n            $user->password = bcrypt($request->get('password'));\n        }\n        $user->save();\n        //$tmp = [$id, $request, $request->all(), $instructor];\n        //dd($tmp);\n\n        return redirect()->route('admin.instructor.show', $id)->withSuccess('Dane zostały zmienione');\n    }\n\n    /**\n     * Remove the specified resource from storage.\n     *\n     * @param  int  $id\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function destroy($id)\n    {\n        $instructor = Instructor::findOrFail($id);\n        //$instructor->delete();\n        return redirect()->route('admin.instructor.index')->withSuccess('Kursant został usunięty');\n    }\n}\n",
-			"file": "app/Http/Controllers/Admin/InstructorController.php",
-			"file_size": 7845,
-			"file_write_time": 131024524439919018,
-			"settings":
-			{
-				"buffer_size": 7730,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/views/admin/instructor/drives/_drives.blade.php",
-			"settings":
-			{
-				"buffer_size": 2597,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/admin/student/hours/_form.blade.php",
-			"settings":
-			{
-				"buffer_size": 350,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/admin/student/hours/edit.blade.php",
-			"settings":
-			{
-				"buffer_size": 975,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/StudentController.php",
-			"settings":
-			{
-				"buffer_size": 4025,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "vendor/laravel/framework/src/Illuminate/Support/Collection.php",
-			"settings":
-			{
-				"buffer_size": 26488,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Hour.php",
-			"settings":
-			{
-				"buffer_size": 569,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/Admin/HourController.php",
-			"settings":
-			{
-				"buffer_size": 4221,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "database/migrations/2016_02_11_091717_create_hours_table.php",
-			"settings":
-			{
-				"buffer_size": 932,
+				"buffer_size": 940,
 				"line_ending": "Unix"
 			}
 		}
@@ -618,12 +695,13 @@
 		"/C/laragon/www/mojeprawko/app/Http",
 		"/C/laragon/www/mojeprawko/app/Http/Controllers",
 		"/C/laragon/www/mojeprawko/app/Http/Controllers/Admin",
-		"/C/laragon/www/mojeprawko/database",
-		"/C/laragon/www/mojeprawko/database/factories",
-		"/C/laragon/www/mojeprawko/database/migrations",
 		"/C/laragon/www/mojeprawko/resources",
 		"/C/laragon/www/mojeprawko/resources/views",
-		"/C/laragon/www/mojeprawko/resources/views/admin/student/hours",
+		"/C/laragon/www/mojeprawko/resources/views/admin",
+		"/C/laragon/www/mojeprawko/resources/views/admin/student",
+		"/C/laragon/www/mojeprawko/resources/views/layouts",
+		"/C/laragon/www/mojeprawko/resources/views/pages",
+		"/C/laragon/www/mojeprawko/resources/views/partials",
 		"/C/laragon/www/mojeprawko/resources/views/student",
 		"/C/laragon/www/mojeprawko/storage",
 		"/C/laragon/www/mojeprawko/storage/framework",
@@ -631,27 +709,57 @@
 	],
 	"file_history":
 	[
+		"/C/laragon/www/mojeprawko/resources/views/admin/instructor/drives/_drives.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/student/show.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/instructor/show.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/instructor/drives/_options.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/instructor/index.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/student/index.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/auth/confirm.blade.php",
+		"/C/laragon/www/mojeprawko/database/migrations/2016_02_10_180748_create_users_table.php",
+		"/C/laragon/www/mojeprawko/vendor/laravel/framework/src/Illuminate/Http/ResponseTrait.php",
+		"/C/laragon/www/mojeprawko/node_modules/tough-cookie/lib/cookie.js",
+		"/C/laragon/www/mojeprawko/vendor/guzzle/guzzle/src/Guzzle/Plugin/Cookie/Exception/InvalidCookieException.php",
+		"/C/laragon/www/mojeprawko/app/Http/Middleware/EncryptCookies.php",
+		"/C/laragon/www/mojeprawko/.env",
+		"/C/laragon/www/mojeprawko/resources/views/admin/student/index.blade.php",
+		"/C/laragon/www/mojeprawko/app/User.php",
+		"/C/laragon/www/mojeprawko/app/Http/Controllers/StudentController.php",
+		"/C/laragon/www/mojeprawko/app/Http/Controllers/Admin/StudentController.php",
+		"/C/laragon/www/mojeprawko/vendor/laravel/framework/src/Illuminate/Support/Collection.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/student/hours/_hours.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/student/_options.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/student/_drives.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/instructor/_form.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/student/_form.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/instructor/create.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/instructor/edit.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/student/_reserve.blade.php",
+		"/C/laragon/www/mojeprawko/app/Student.php",
+		"/C/laragon/www/mojeprawko/app/Instructor.php",
+		"/C/laragon/www/mojeprawko/database/migrations/2016_02_10_180807_create_instructors_table.php",
+		"/C/laragon/www/mojeprawko/database/migrations/2016_02_10_184947_create_students_table.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/student/_drives.blade.php",
+		"/C/laragon/www/mojeprawko/database/migrations/2016_02_11_091717_create_hours_table.php",
+		"/C/laragon/www/mojeprawko/app/Http/Controllers/Admin/HourController.php",
+		"/C/laragon/www/mojeprawko/app/Hour.php",
+		"/C/laragon/www/mojeprawko/resources/assets/sass/app.scss",
+		"/C/laragon/www/mojeprawko/resources/views/admin/student/hours/edit.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/student/payments/_payments.blade.php",
+		"/C/laragon/www/mojeprawko/resources/views/admin/student/hours/_form.blade.php",
+		"/C/laragon/www/mojeprawko/app/Http/routes.php",
+		"/C/laragon/www/mojeprawko/app/Http/Controllers/Admin/InstructorController.php",
+		"/C/laragon/www/mojeprawko/storage/framework/views/8895a3fd563624c383da0d548634bac101abd4cc.php",
 		"/C/laragon/www/mojeprawko/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php",
 		"/C/laragon/www/mojeprawko/vendor/laravel/framework/src/Illuminate/Validation/DatabasePresenceVerifier.php",
 		"/C/laragon/www/mojeprawko/vendor/laravel/framework/src/Illuminate/Validation/Validator.php",
-		"/C/laragon/www/mojeprawko/app/Student.php",
 		"/C/laragon/www/mojeprawko/resources/assets/js/admin.js",
-		"/C/laragon/www/mojeprawko/database/migrations/2016_02_10_184947_create_students_table.php",
-		"/C/laragon/www/mojeprawko/app/Http/Controllers/Admin/StudentController.php",
-		"/C/laragon/www/mojeprawko/resources/views/admin/instructor/drives/_drives.blade.php",
-		"/C/laragon/www/mojeprawko/resources/views/admin/student/_form.blade.php",
-		"/C/laragon/www/mojeprawko/app/Instructor.php",
 		"/C/laragon/www/mojeprawko/app/Drive.php",
-		"/C/laragon/www/mojeprawko/resources/views/admin/instructor/show.blade.php",
-		"/C/laragon/www/mojeprawko/resources/views/student/_reserve.blade.php",
-		"/C/laragon/www/mojeprawko/app/Hour.php",
 		"/C/laragon/www/mojeprawko/storage/framework/views/7db1142a16036a03b2f11a2356afa4d2aaff4f7a.php",
-		"/C/laragon/www/mojeprawko/resources/views/student/index.blade.php",
 		"/C/laragon/www/mojeprawko/storage/framework/views/1955c52d67c10cfb9fa19cf8e020ae88aad74f6b.php",
 		"/C/laragon/www/mojeprawko/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php",
 		"/C/laragon/www/mojeprawko/config/auth.php",
 		"/C/laragon/www/mojeprawko/resources/views/auth/login-backup.blade.php",
-		"/C/laragon/www/mojeprawko/.env",
 		"/C/laragon/www/mojeprawko/app/Http/Controllers/Auth/AuthController.php",
 		"/D/INSTALKI/DESIGN/www/SUBLIME 3 PORTABLE/Data/Packages/Default/Default (Windows).sublime-keymap",
 		"/C/laragon/www/mojeprawko/resources/views/partials/_nav.blade.php",
@@ -662,7 +770,6 @@
 		"/C/laragon/www/mojeprawko/resources/views/layouts/app.blade.php",
 		"/C/laragon/www/mojeprawko/database/migrations/2016_01_27_112904_create_users_table.php",
 		"/C/laragon/www/mojeprawko/config/services.php",
-		"/C/laragon/www/mojeprawko/app/Http/routes.php",
 		"/C/laragon/www/mojeprawko/resources/views/pages/home.blade.php",
 		"/C/laragon/www/mojeprawko/resources/views/auth/login.blade.php",
 		"/C/wamp/www/zpl_dev/zpl_new/error_log",
@@ -690,7 +797,6 @@
 		"/C/laragon/www/BF/resources/views/welcome.blade.php",
 		"/C/laragon/www/BF/resources/views/home.blade.php",
 		"/C/laragon/www/mojeprawko/.gitignore",
-		"/C/laragon/www/mojeprawko/resources/assets/sass/app.scss",
 		"/C/laragon/www/mojeprawko/resources/assets/bower/bootstrap-sass/assets/javascripts/ie10-viewport-bug-workaround.js",
 		"/C/laragon/www/mojeprawko/public/css/app.css",
 		"/C/Users/marcin/.gitconfig",
@@ -730,35 +836,7 @@
 		"/C/laragon/www/pj/app/Providers/RouteServiceProvider.php",
 		"/C/laragon/www/pj/resources/views/admin/fields/create.blade.php",
 		"/C/laragon/www/pj/app/Http/Middleware/Authenticate.php",
-		"/C/laragon/www/pj/database/migrations/2015_08_26_123006_create_fieldOptions_table.php",
-		"/C/laragon/www/pj/app/Field.php",
-		"/C/laragon/www/pj/database/migrations/2015_09_26_074059_FieldsTable.php",
-		"/C/laragon/www/pj/database/migrations/2015_09_30_190918_create_sections_table.php",
-		"/C/laragon/www/pj/database/migrations/2015_09_24_153927_CreateObjetcTypeTable.php",
-		"/C/laragon/www/pj/composer.json",
-		"/C/wamp/www/laravel/pj/resources/views/admin/fields/create.blade.php",
-		"/C/laragon/www/pj/resources/views/admin/object/index.blade.php",
-		"/C/laragon/www/pj/app/ObjectType.php",
-		"/C/laragon/www/pj/database/migrations/2015_09_24_182558_create_ObjectFieldRelation_table.php",
-		"/C/laragon/www/pj/database/migrations/2015_09_24_191519_create_ObjectFieldRelation_table.php",
-		"/C/laragon/www/pj/app/ObjectFieldRelation.php",
-		"/C/laragon/www/pj/database/migrations/2015_09_24_143919_CreateObjectsTable.php",
-		"/C/laragon/www/pj/app/Http/Controllers/AdminController.php",
-		"/C/laragon/www/pj/app/Http/Requests/StoreFieldRequest.php",
-		"/C/laragon/www/pj/app/Http/Requests/FieldUpdateRequest.php",
-		"/C/laragon/www/pj/resources/views/admin/field/create.blade.php",
-		"/C/laragon/www/pj/resources/views/admin/field/_form.blade.php",
-		"/C/laragon/www/pj/resources/views/admin/field/edit.blade.php",
-		"/C/laragon/www/pj/app/Http/Controllers/Admin/FieldController.php",
-		"/C/laragon/www/pj/resources/views/admin/field/index.blade.php",
-		"/C/laragon/www/pj/resources/views/admin/partials/errors.blade.php",
-		"/C/laragon/www/pj/resources/views/admin/partials/success.blade.php",
-		"/C/laragon/www/pj/app/Http/Controllers/Admin/ObjectController.php",
-		"/C/laragon/www/pj/vendor/composer/ClassLoader.php",
-		"/C/laragon/www/pj/resources/views/admin/index.blade.php",
-		"/C/laragon/www/pj/database/migrations/2015_09_26_083216_ObjectTable.php",
-		"/C/laragon/www/pj/resources/lang/pl/validation.php",
-		"/C/laragon/www/pj/resources/views/admin/layout.blade.php"
+		"/C/laragon/www/pj/database/migrations/2015_08_26_123006_create_fieldOptions_table.php"
 	],
 	"find":
 	{
@@ -769,6 +847,7 @@
 		"height": 90.0,
 		"where_history":
 		[
+			"C:\\laragon\\www\\mojeprawko\\resources\\views",
 			"C:\\wamp\\www\\zpl_dev\\components\\com_sobipro",
 			"C:\\wamp\\www\\zpl_dev",
 			"C:\\laragon\\www\\mojeprawko",
@@ -821,6 +900,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"drives._options",
+			"form::hidden",
+			"hour",
+			"hours",
+			"table-stripped",
 			"studentCanDriveGtThisWeek",
 			"break",
 			"value",
@@ -943,12 +1027,7 @@
 			"mig",
 			"set published",
 			"update",
-			"set",
-			"published",
-			"publish",
-			"function getFields(cat_id){	",
-			"segments",
-			"var_"
+			"set"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -968,7 +1047,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -996,7 +1075,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
@@ -1004,15 +1083,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 318,
+						"buffer_size": 319,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								318,
-								318
+								223,
+								223
 							]
 						],
 						"settings":
@@ -1022,19 +1101,49 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 320.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "resources/views/admin/student/hours/_hours.blade.php",
+					"file": "app/Http/Controllers/Admin/StudentController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 850,
+						"buffer_size": 5402,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1121,
+								1121
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 443.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/Http/Middleware/EncryptCookies.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 312,
 						"regions":
 						{
 						},
@@ -1047,152 +1156,120 @@
 						],
 						"settings":
 						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/Http/routes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2143,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1239,
+								1239
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 410.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "resources/views/auth/login.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1886,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1773,
+								1773
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 391.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "resources/views/auth/confirm.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1593,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1356,
+								1356
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 136.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "resources/views/admin/student/show.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1688,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								627,
-								627
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "resources/views/student/_reserve.blade.php",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 524,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/Http/Controllers/Admin/InstructorController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7730,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2817,
-								2786
-							]
-						],
-						"settings":
-						{
-							"history_list_is_closing": true,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1035.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "resources/views/admin/instructor/drives/_drives.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2597,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1154,
-								1154
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 90.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
 					"buffer": 7,
-					"file": "resources/views/admin/student/hours/_form.blade.php",
+					"file": "resources/views/partials/_footer.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 350,
+						"buffer_size": 346,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								273,
-								123
+								346,
+								346
 							]
 						],
 						"settings":
@@ -1208,19 +1285,77 @@
 				},
 				{
 					"buffer": 8,
-					"file": "resources/views/admin/student/hours/edit.blade.php",
+					"file": "resources/assets/sass/app.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 975,
+						"buffer_size": 603,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								741,
-								741
+								520,
+								520
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 315.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "resources/views/admin/instructor/show.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1429,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 450.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "resources/views/admin/instructor/drives/_drives.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2702,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2702,
+								2702
 							]
 						],
 						"settings":
@@ -1233,90 +1368,30 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 5,
 			"sheets":
 			[
 				{
-					"buffer": 9,
-					"file": "app/Http/Controllers/StudentController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4025,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2533,
-								2533
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 688.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "vendor/laravel/framework/src/Illuminate/Support/Collection.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 26488,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2992,
-								2992
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 11225.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
 					"buffer": 11,
-					"file": "app/Hour.php",
+					"file": "app/Http/Controllers/Auth/AuthController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 569,
+						"buffer_size": 5283,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								472,
-								472
+								3153,
+								3153
 							]
 						],
 						"settings":
@@ -1326,37 +1401,37 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1680.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
 					"buffer": 12,
-					"file": "app/Http/Controllers/Admin/HourController.php",
+					"file": "resources/views/admin/student/index.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4221,
+						"buffer_size": 1360,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								305,
-								305
+								1179,
+								1179
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 160.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
@@ -1364,19 +1439,19 @@
 				},
 				{
 					"buffer": 13,
-					"file": "database/migrations/2016_02_11_091717_create_hours_table.php",
+					"file": "app/Http/Controllers/Admin/InstructorController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 932,
+						"buffer_size": 7775,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								725,
-								725
+								2902,
+								2902
 							]
 						],
 						"settings":
@@ -1386,10 +1461,131 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1395.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "resources/views/student/index.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2519,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								684,
+								684
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "resources/views/student/_drives.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2878,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								678,
+								678
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "resources/views/admin/student/show.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								730,
+								730
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 315.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "app/User.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 940,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								580,
+								580
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 128.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
 					"type": "text"
 				}
 			]
@@ -1428,7 +1624,7 @@
 		"rows":
 		[
 			0.0,
-			0.351063829787,
+			0.583687943262,
 			1.0
 		]
 	},
@@ -1454,6 +1650,114 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"instrc",
+				"app\\Http\\Controllers\\Admin\\InstructorController.php"
+			],
+			[
+				"_drives",
+				"resources\\views\\admin\\instructor\\drives\\_drives.blade.php"
+			],
+			[
+				"show.b",
+				"resources\\views\\admin\\instructor\\show.blade.php"
+			],
+			[
+				".scss",
+				"resources\\assets\\sass\\app.scss"
+			],
+			[
+				"index.b",
+				"resources\\views\\student\\index.blade.php"
+			],
+			[
+				"confirm",
+				"resources\\views\\auth\\confirm.blade.php"
+			],
+			[
+				"encrypt",
+				"app\\Http\\Middleware\\EncryptCookies.php"
+			],
+			[
+				"cookiee",
+				"vendor\\guzzle\\guzzle\\src\\Guzzle\\Plugin\\Cookie\\Exception\\InvalidCookieException.php"
+			],
+			[
+				"encryptc",
+				"app\\Http\\Middleware\\EncryptCookies.php"
+			],
+			[
+				"stude",
+				"app\\Http\\Controllers\\Admin\\StudentController.php"
+			],
+			[
+				"user",
+				"app\\User.php"
+			],
+			[
+				"route",
+				"app\\Http\\routes.php"
+			],
+			[
+				"index.php",
+				"resources\\views\\admin\\instructor\\index.blade.php"
+			],
+			[
+				"r/_f",
+				"resources\\views\\admin\\instructor\\_form.blade.php"
+			],
+			[
+				"students",
+				"database\\migrations\\2016_02_10_184947_create_students_table.php"
+			],
+			[
+				"instructorst",
+				"database\\migrations\\2016_02_10_180807_create_instructors_table.php"
+			],
+			[
+				"instruct",
+				"app\\Instructor.php"
+			],
+			[
+				"student.p",
+				"app\\Student.php"
+			],
+			[
+				"t/index.b",
+				"resources\\views\\student\\index.blade.php"
+			],
+			[
+				"_rese",
+				"resources\\views\\student\\_reserve.blade.php"
+			],
+			[
+				"studentc",
+				"app\\Http\\Controllers\\Admin\\StudentController.php"
+			],
+			[
+				"_hours",
+				"resources\\views\\admin\\student\\hours\\_hours.blade.php"
+			],
+			[
+				"_drives.b",
+				"resources\\views\\student\\_drives.blade.php"
+			],
+			[
+				"student.i",
+				"resources\\views\\student\\index.blade.php"
+			],
+			[
+				"_payments",
+				"resources\\views\\admin\\student\\payments\\_payments.blade.php"
+			],
+			[
+				"_res",
+				"resources\\views\\student\\_reserve.blade.php"
+			],
+			[
+				"_payme",
+				"resources\\views\\admin\\student\\payments\\_payments.blade.php"
+			],
 			[
 				"collection.php",
 				"vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php"
@@ -1485,10 +1789,6 @@
 			[
 				"instruc",
 				"app\\Http\\Controllers\\Admin\\InstructorController.php"
-			],
-			[
-				"studentc",
-				"app\\Http\\Controllers\\StudentController.php"
 			],
 			[
 				"login",
@@ -1525,10 +1825,6 @@
 			[
 				"entry",
 				"pj\\app\\Entry.php"
-			],
-			[
-				"route",
-				"pj\\app\\Http\\routes.php"
 			],
 			[
 				"rou",
@@ -1751,10 +2047,6 @@
 				"C:\\wamp\\logs\\mysql_general2.log"
 			],
 			[
-				"index.php",
-				"C:\\wamp\\www\\zpl_dev\\index.php"
-			],
-			[
 				"find",
 				"Find Results"
 			],
@@ -1781,10 +2073,6 @@
 			[
 				"image",
 				"opt\\fields\\image.php"
-			],
-			[
-				"user",
-				"opt\\listing\\user.php"
 			],
 			[
 				"se",
@@ -1819,7 +2107,7 @@
 		],
 		"width": 520.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -1827,7 +2115,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 240.0,
+	"side_bar_width": 140.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
