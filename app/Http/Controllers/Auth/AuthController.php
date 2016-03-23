@@ -102,7 +102,7 @@ class AuthController extends Controller
  
         Auth::login($authUser, true);
  
-        return redirect('/');
+        return Auth::user()->is_admin ? redirect('/admin') : redirect('/student');
     }
  
     /**
