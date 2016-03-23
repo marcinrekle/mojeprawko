@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Validator;
 use Carbon\Carbon;
 
 use App\Instructor;
 use App\Student;
 use App\Drive;
+use App\User;
 
 class InstructorController extends Controller
 {
@@ -70,13 +72,17 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $this->validator($request->all());
+        $data = $request->all();
+        $validator = $this->validator($data);
         if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
-        $user = User::create($request->all());
+        $data['confirm_code'] = str_random(32);
+        $data['avatar'] = '/img/defaultUser.png';
+        $user = User::create($data);
         $instructor = new Instructor;
-        $instructor->fill($request->all());
+        $instructor->fill($data);
         $user->instructor()->save($instructor);
-        return redirect()->back()->withSuccess('Dodano kursanta');//change redirect to instructor profil
+        $confirm_link = url('auth/confirm',[$user->id,$data['confirm_code']]);
+        return redirect()->route('admin.instructor.show', [$user->instructor->id])->withSuccess("Dodano instruktora. <br /> Link do potwierdzenia konta <a href='$confirm_link'>$confirm_link</a>");
     }
 
     /**
