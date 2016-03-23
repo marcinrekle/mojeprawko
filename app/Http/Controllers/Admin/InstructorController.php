@@ -221,7 +221,7 @@ class InstructorController extends Controller
     public function destroy($id)
     {
         $instructor = Instructor::findOrFail($id);
-        //$instructor->delete();
-        return redirect()->route('admin.instructor.index')->withSuccess('Kursant został usunięty');
+        $instructor->user()->delete();
+        return redirect()->route('admin.instructor.index')->withSuccess('Instructor został usunięty');
     }
 }

@@ -126,8 +126,6 @@ class StudentController extends Controller
         $user->save();
         $student->update($request->all());
         $student->save();
-        //$tmp = [$id, $request, $request->all(), $student];
-        //dd($tmp);
 
         return redirect()->route('admin.student.show', $id)->withSuccess('Dane zostały zmienione');
     }
@@ -135,7 +133,7 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = Student::findOrFail($id);
-        //$student->delete();
+        $student->user()->delete();
         return redirect()->route('admin.student.index')->withSuccess('Kursant został usunięty');
     }
 
