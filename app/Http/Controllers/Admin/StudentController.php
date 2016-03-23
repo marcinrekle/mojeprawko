@@ -36,7 +36,7 @@ class StudentController extends Controller
         $student = Student::whereId($id)->with('hours.drive','payments')->first();
         $status = 'active';
         $studentCanDrive = $student->hours->sum('count')+$student->hours_start < $student->hours_count;
-        if ($status != 'active' || !$studentCanDrive) {
+        if ($student->status != 'active' || !$studentCanDrive) {
             $studentCanDrive = $instructor = false;
             return view('admin.student.show', compact('student', 'instructors', 'studentCanDrive'));
         }
@@ -46,7 +46,7 @@ class StudentController extends Controller
             return $item <= $payed;
         })->count();
         $studentCanDriveGtThisWeek = $student->hours->keyBy('drive.date')->sortByDesc('drive.date')->filter( function ($hour, $key) {
-                return $key > Carbon::parse('last year 0:00');//change to last week
+                return $key > Carbon::parse('last week 0:00');//change to last week
         });
         for ($i=0; $i < 4; $i++) { 
             $tmp[$i] = $studentCanDriveGtThisWeek->filter( function ($item, $key) use ($i){
@@ -93,17 +93,17 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
-        $validator = $this->validator($request->all());
-        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
         $tmp = $request->all();
+        $validator = $this->validator($tmp);
+        if($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
         $tmp['confirm_code'] = str_random(32);
+        $tmp['avatar'] = '/img/defaultUser.png';
         $user = User::create($tmp);
         $student = new Student;
-        $student->fill($request->all());
+        $student->fill($tmp);
         $user->student()->save($student);
         $confirm_link = url('auth/confirm',[$user->id,$tmp['confirm_code']]);
-        //dd($confirm_link);
-        return redirect()->route('admin.student.show', [$user->student->id])->withSuccess("Dodano kursanta. <br /> Link do potwierdzenia konta <a href='http://mojeprawko.dev/auth/confirm/25/l5zbIBK4s6L13vQrfmiqIiovQFt9SFJg'>http://mojeprawko.dev/auth/confirm/25/l5zbIBK4s6L13vQrfmiqIiovQFt9SFJg</a>");//change redirect to student profil
+        return redirect()->route('admin.student.show', [$user->student->id])->withSuccess("Dodano kursanta. <br /> Link do potwierdzenia konta <a href='$confirm_link'>$confirm_link</a>");
     }
 
     public function edit($id)
