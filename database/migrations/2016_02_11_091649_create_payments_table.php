@@ -16,7 +16,7 @@ class CreatePaymentsTable extends Migration
             $table->increments('id')->unsigned();
             $table->date('payment_date');
             $table->integer('student_id')->unsigned()->index();
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->decimal('amount', 5, 2);
             $table->timestamps();
         });

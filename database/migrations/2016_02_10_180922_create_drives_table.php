@@ -15,7 +15,7 @@ class CreateDrivesTable extends Migration
         Schema::create('drives', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('instructor_id')->unsigned()->index();
-            $table->foreign('instructor_id')->references('id')->on('instructors');
+            $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
             $table->dateTime('date');
             $table->integer('hours_count');
             $table->timestamps();
