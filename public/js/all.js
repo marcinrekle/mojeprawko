@@ -69,7 +69,7 @@ $('a.change').click(function(e) {
 	appendAddEditForm(e);
 
 });
-$('.deleteStudent').click(function(e) {
+$('.deleteStudent, .fa-trash-o').click(function(e) {
 	e.preventDefault();
 	if( confirm('Czy na pewno chcesz usunąć') ){
 		var elem = $(this);
