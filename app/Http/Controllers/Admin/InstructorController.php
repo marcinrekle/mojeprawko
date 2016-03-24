@@ -50,7 +50,7 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        $instructors = Instructor::with('user')->get();
+        $instructors = Instructor::whereStatus('active')->with('user')->get();
         return view('admin.instructor.index', ['instructors' => $instructors]);
     }
 

@@ -25,14 +25,12 @@ class StudentController extends Controller
 
     public function index()
     {
-    	$students = Student::with('hours')->with('payments')->get();
-    	//dd($students);
+    	$students = Student::whereStatus('active')->with(['hours','payments'])->get();
     	return view('admin.student.index', ['students' => $students]);
     }
 
     public function show($id)
     {
-        //$student = Student::findOrFail($id);
         $student = Student::whereId($id)->with('hours.drive','payments')->first();
         $status = 'active';
         $studentCanDrive = $student->hours->sum('count')+$student->hours_start < $student->hours_count;
