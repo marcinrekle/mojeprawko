@@ -10,7 +10,6 @@
         <br />
         {{Auth::user()->payments}}
       @endif
-
     @foreach($drives->load('hours.student.user') as $key => $drive)
     <tr data-did="{{ $drive->id }}" data-week="{{ $key }}">
       <td>

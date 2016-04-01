@@ -42,11 +42,17 @@
             <h3 class="panel-title">Jazdy</h3>
           </div>
           <div class="panel-body">
+          @if (! isset($students) )
             @include('admin.instructor.drives._drives', [$instructor]) 
+          @else
+            @include('admin.instructor.drives._drives_first', [$instructor]) 
+          @endif
           </div>
         </div>
       </div>
-      @include('admin.instructor.drives._formAddHour') 
+      @if ( isset($students) )
+        @include('admin.instructor.drives._formAddHour')
+      @endif 
     </div>
   </div>
 

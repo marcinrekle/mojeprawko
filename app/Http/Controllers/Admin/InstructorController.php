@@ -43,6 +43,18 @@ class InstructorController extends Controller
         
     }
 
+    protected function drivesInWeek( $items )
+    {
+        for ($i=3; $i >= 0; $i--) {
+            $item[$i] = $items->keyBy('date')->filter( function( $item, $key) use ( $i) {
+                return $key > Carbon::parse('this week 0:00')->addWeeks($i) && $key < Carbon::parse('this week 0:00')->addWeeks($i+1);
+            });
+            $items = $items->diff($item[$i])->keyBy('date');
+        }
+        $item['old'] = $items;
+        return $item;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -99,16 +111,71 @@ class InstructorController extends Controller
 
         $instructor = Instructor::findOrFail($id);
         $drives = $instructor->drives()->orderBy('date','desc')->paginate(30);
-        //dump($drives);
-        //dd($drives);
-        //$drives = Instructor::findOrFail($id)->drives()->with('hours.student.user')->get()->sortByDesc('date');
-        $students = Student::where('id','>',5)->with('user')->get()->sortBy('user.name')->pluck('user.name', 'id')->toArray();
+        if(isset($_GET['page']) && $_GET['page'] > 1 ){
+            return view('admin.instructor.show', compact('instructor', 'drives'));
+        }
+        $items = $instructor['drives'] = collect($this->drivesInWeek( $drives ));
+        //dd($instructor);
+        //$students = Student::whereStatus('active')->with('user')->get()->sortBy('user.name')->pluck('user.name', 'id')->toArray();
         
-        $studentsCanDrive = Student::where('id','>',5)->with('hours.drive')->with('payments')->get()->keyBy('id')->sortBy('id');
+        //          if page > 1 return view - dont need calculate for reserve drives
+
+        $students = Student::whereStatus('active')->with(['user', 'hours.drive'])->with('payments')->get()->keyBy('id')->sortBy('id');
+        $drivesPerWeek = collect([200,500,1000]);
+        $students = $students->filter(function ( $value, $key ) {
+            return $value->hours->sum('count')+$value->hours_start < $value->hours_count; 
+        });
+
+        $studentsDrivesPerWeek = $students->map( function( $item, $key) use ($drivesPerWeek) {
+            $payed = $item->payments->sum('amount');
+            return $drivesPerWeek->filter( function ($item, $key) use ($payed) {
+                return $item <= $payed;
+            })->count();
+        });
+        
+        for ($i=0; $i < 4; $i++) { 
+            $cantDriveList[$i] = clone $studentsDrivesPerWeek; 
+        }
+        //dump($cantDriveList);
+        for ($i=0; $i < 4; $i++) { 
+            $drivesInWeek[$i] = Drive::where('date', '>', Carbon::parse('this week 0:00')->addWeeks($i))->where('date', '<', Carbon::parse('this week 0:00')->addWeeks($i+1))->with('hours')->get()->keyBy('date');
+        }
+        //dump($drivesInWeek);
+        collect($drivesInWeek)->each( function ( $item, $key) use ($cantDriveList) {
+            $list = $cantDriveList[$key];
+            $item->each( function ( $item, $key) use ( $list) {
+                $item->hours->keyBy('student_id')->each( function ( $item, $key) use ($list) {
+                    //dump($key);
+                    //dump($list);
+                    if( isset( $list[$key])) {   
+                        $list[$key] =- 1;
+                    }
+                });
+            });
+            $cantDriveList[$key] = $list;
+        });
+        //dump($cantDriveList);
+        foreach ($cantDriveList as &$cdl) {
+            $cdl = $cdl->filter( function ( $item) {
+                return $item <= 0;
+            });
+        }
+        //dump($students->toArray());
+        for ($i=0; $i < 4; $i++) { 
+            $s = clone $students;
+            $canDriveList[$i] = $s->forget($cantDriveList[$i]->keys()->all())->pluck('user.name', 'id');
+        }
+        
+
+        return view('admin.instructor.show', compact('instructor', 'drives', 'students', 'canDriveList'));
+
+        
+        $studentsCanDrive = Student::whereStatus('active')->with('hours.drive')->with('payments')->get()->keyBy('id')->sortBy('id');
         
         $studentsCanDrive = $studentsCanDrive->filter(function ( $value, $key ){
             return $value->hours->sum('count')+$value->hours_start < $value->hours_count; 
         });
+
             //dump($studentsCanDrive->toArray());
         
         

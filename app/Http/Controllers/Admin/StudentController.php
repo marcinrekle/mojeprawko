@@ -56,7 +56,7 @@ class StudentController extends Controller
         }
         $studentCanDrive = $tmp;
 
-        $instructors = Instructor::with(['drives' => function ($query){ $query->where('date', '>', date('Y-m-d', strtotime('tomorrow'))); }])->get()->keyBy('id');
+        $instructors = Instructor::with(['drives' => function ($query){ $query->where('date', '>', date('Y-m-d', strtotime('this week'))); }])->get()->keyBy('id');
         foreach ($instructors as $key => $instructor) {
             $sorted = $instructor->drives->keyBy('date');
             for ($i=0; $i < 4; $i++) { 
