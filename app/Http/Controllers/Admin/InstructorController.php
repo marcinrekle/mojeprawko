@@ -107,12 +107,13 @@ class InstructorController extends Controller
     {
         //var_dump(microtime());
         
-        $thisWeekStart = Carbon::parse('this week 0:00');
 
         $instructor = Instructor::findOrFail($id);
         $drives = $instructor->drives()->orderBy('date','desc')->paginate(30);
+        $studentsAll = Student::with('user')->get()->keyBy('id')->sortBy('id')->pluck('user.name','id');
         if(isset($_GET['page']) && $_GET['page'] > 1 ){
-            return view('admin.instructor.show', compact('instructor', 'drives'));
+            $canDriveList['old'] = $studentsAll;
+            return view('admin.instructor.show', compact('instructor', 'drives','canDriveList'));
         }
         $items = $instructor['drives'] = collect($this->drivesInWeek( $drives ));
         //dd($instructor);
@@ -141,12 +142,11 @@ class InstructorController extends Controller
             $drivesInWeek[$i] = Drive::where('date', '>', Carbon::parse('this week 0:00')->addWeeks($i))->where('date', '<', Carbon::parse('this week 0:00')->addWeeks($i+1))->with('hours')->get()->keyBy('date');
         }
         //dump($drivesInWeek);
+        //dd($drivesInWeek);
         collect($drivesInWeek)->each( function ( $item, $key) use ($cantDriveList) {
             $list = $cantDriveList[$key];
             $item->each( function ( $item, $key) use ( $list) {
                 $item->hours->keyBy('student_id')->each( function ( $item, $key) use ($list) {
-                    //dump($key);
-                    //dump($list);
                     if( isset( $list[$key])) {   
                         $list[$key] =- 1;
                     }
@@ -160,87 +160,16 @@ class InstructorController extends Controller
                 return $item <= 0;
             });
         }
-        //dump($students->toArray());
+        //dump($cantDriveList);
         for ($i=0; $i < 4; $i++) { 
             $s = clone $students;
             $canDriveList[$i] = $s->forget($cantDriveList[$i]->keys()->all())->pluck('user.name', 'id');
         }
-        
-
+        $canDriveList['old'] = $studentsAll;
+        //dump($canDriveList);
         return view('admin.instructor.show', compact('instructor', 'drives', 'students', 'canDriveList'));
 
-        
-        $studentsCanDrive = Student::whereStatus('active')->with('hours.drive')->with('payments')->get()->keyBy('id')->sortBy('id');
-        
-        $studentsCanDrive = $studentsCanDrive->filter(function ( $value, $key ){
-            return $value->hours->sum('count')+$value->hours_start < $value->hours_count; 
-        });
-
-            //dump($studentsCanDrive->toArray());
-        
-        
-        $drivesThisWeek = Drive::where( \DB::raw("WEEK(date)"), "=", \DB::raw("WEEK(NOW())") )->with('hours')->with('hours')->get()->keyBy('id');
-        $list = $drivesThisWeek->map( function($item) {
-            $a = $item->hours->keyBy('student_id')->keys()->implode(',');
-            //$b = $item->hours->keyBy('student_id')->keys()->toArray();
-            //dump( $item->hours->flatten() );
-            //dump( $b );
-            
-            return $a;
-        });
-        //dump($list);
-        $tes = $drivesThisWeek->map( function ($item, $key) {
-            $a = $item->hours->map(function ($item, $key){
-                //dump($item['student_id']);      
-                return ['student_id' => $item['student_id']];
-            });
-            return $a;
-        });
-        //dump( $tes ); 
-        //dump($drivesThisWeek);
-
-
-
-        $studentHC = Student::where('id','>',5)->with('hours')->with('payments')->get();
-        $s2 = Student::where('id','>',5)->with('hours.drive')->get()->keyBy('id');
-    
-        $s2 = $s2->map( function( $item, $key ){
-            //dd( $item->toArray() );
-        } );
-        //dd($s2->toArray());
-        $studenty = Student::where('id','>',5)->with('hours.drive')->with('payments')->get()->sortBy('id');
-        
-        $studenty = $studenty->filter(function ( $value, $key ){
-            return $value->hours->sum('count') < $value->hours_count; 
-        });
-        $studentPaymentsList = $studenty->keyBy('id');
-        $studentPaymentsList2 = $studentPaymentsList->map(function($item, $key){
-            return $item->hours;
-        });
-        //dd($studentPaymentsList2->toArray());
-        
-        $can3 = $studenty->filter(function ( $value, $key ){
-            return $value->payments->sum('amount') >= 1000; 
-        });
-        $can2 = $studenty = $studenty->filter(function ( $value, $key ){
-            return $value->payments->sum('amount') < 1000 && $value->payments->sum('amount') > 500 ; 
-        });
-        $can1 = $studenty = $studenty->filter(function ( $value, $key ){
-            return $value->payments->sum('amount') < 500 && $value->payments->sum('amount') > 200 ; 
-        });
-
-        /*foreach ($studenty as $student) {
-            var_dump( $student->id );
-            var_dump( $student->payments->sum('amount') );
-        }*/
-        //dd($jazdy);
-
-        //$drives = $instructor::with('drives.hours.student.user')->get()->toArray();
-
-        //dd([$instructor, $instructor2, $instructor3,$drives]);
-        $students = $this->canDriveInWeek( $studentsCanDrive, $thisWeekStart);
-
-        return view('admin.instructor.show', compact('instructor', 'drives', 'students'));
+        // END CAN DELETE BOTTOM CODE
     }
 
     /**

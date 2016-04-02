@@ -11,7 +11,7 @@
         {{Auth::user()->payments}}
       @endif
     @foreach($drives->load('hours.student.user') as $key => $drive)
-    <tr data-did="{{ $drive->id }}" data-week="{{ $key }}">
+    <tr data-did="{{ $drive->id }}" data-week="old">
       <td>
         @if( auth::user()->is_admin )  
           <a href="{{route('admin.instructor.drives.edit',[$instructor->id,$drive->id])}}" class="edit"><i class="fa fa-pencil fa-2x"></i></a>

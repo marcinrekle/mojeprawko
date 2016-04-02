@@ -50,9 +50,7 @@
           </div>
         </div>
       </div>
-      @if ( isset($students) )
         @include('admin.instructor.drives._formAddHour')
-      @endif 
     </div>
   </div>
 

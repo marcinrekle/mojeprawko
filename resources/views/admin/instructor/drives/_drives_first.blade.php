@@ -1,6 +1,6 @@
 <table class="table table-striped">
   <tr class="no-border">
-    <th> DF</th>
+    <th> </th>
     <th>Data</th>
     <th>1</th>
     <th>2</th>
@@ -10,8 +10,8 @@
     <br />
     {{Auth::user()->payments}}
   @endif
-  @foreach($instructor->drives as $key => $drives)
-    @foreach($drives as $drive)
+  @foreach($instructor->drives as $key => $localDrives)
+    @foreach($localDrives as $drive)
     <tr data-did="{{ $drive->id }}" data-week="{{ $key }}">
       <td>
         @if( auth::user()->is_admin )  
@@ -62,11 +62,7 @@
         @for ($i = count($drive->hours); $i < 2; $i++)
           <td>
           @if( $key !== 'old' )
-            {!! Form::open( [
-              'route' => ['admin.student.hours.store', 0],
-            ]) !!}
-            {!! Form::button('<span class="fa fa-plus"></span> Dodaj', ['type' => 'submit', 'class' => 'btn btn-primary addStudent']) !!}
-            {!! Form::close() !!}
+            <a data-did="{{$drive->id}}" href="/admin/drives/{{$drive->id}}/student/" class="add btn btn-primary"><span class="fa fa-plus"></span> Dodaj</a>
           @endif
           </td>
         @endfor    
@@ -75,3 +71,4 @@
     @endforeach
   @endforeach
 </table>
+{!! $drives->links() !!}

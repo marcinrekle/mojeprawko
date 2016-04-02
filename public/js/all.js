@@ -45,13 +45,18 @@ function appendAddEditForm(e) {
 	var method = elem.hasClass('add') ? 'POST' : 'PATCH';
 	form.find('[name=_method]').val(method);
 	form.find('[name=drive_id]').val(elem.closest('tr').data('did'));
+	var week = elem.closest('tr').data('week');
+	if(!form.find('select').hasClass('canDriveList-'+week)){
+		form.find('.canDriveList').html($('.canDriveList-'+week).clone());
+	}
 
 }
 $('a.add').click(function(e) {
 	appendAddEditForm(e);
 	$('#student_id').val( '' );
 });
-$('#student_id').change(function(e) {
+
+$('body').on('change', '#student_id', function(e) {
 	var elem = $(this); 
 	var val = elem.val();
 	var form = elem.parents('form');
@@ -65,11 +70,11 @@ $('#student_id').change(function(e) {
 	}
 });
 $('a.change').click(function(e) {
-	$('#student_id').val( $( e.target ).closest('a').data('sid') );
 	appendAddEditForm(e);
+	$('#student_id').val( $( e.target ).closest('a').data('sid') );
 
 });
-$('.deleteStudent, .fa-trash-o').click(function(e) {
+$('.deleteStudent').click(function(e) {
 	e.preventDefault();
 	if( confirm('Czy na pewno chcesz usunąć') ){
 		var elem = $(this);
